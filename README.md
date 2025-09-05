@@ -61,3 +61,5 @@ Abre `index.html` en tu navegador. Todos los assets son locales. (El video es un
 ├─ assets/hero.jpg (placeholder)
 └─ assets/intro.mp4 (placeholder)
 ```
+
+prueba
