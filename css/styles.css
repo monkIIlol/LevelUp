@@ -44,3 +44,33 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
   .hero{grid-template-columns:1fr}
   .products-layout{grid-template-columns:1fr}
 }
+
+.form-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #111;
+  border-radius: 8px;
+}
+
+/*Footer*/
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.site-footer .cols {
+  max-width: 960px;    
+  margin: 0 auto;      
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0.5rem 0;
+}
+
+.site-footer section {
+  flex: 1;
+  min-width: 200px;
+}
+/*Footer*/

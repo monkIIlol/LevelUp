@@ -1,18 +1,22 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
-<body>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column; margin: 0;">
   <header class="site-header">
     <a class="brand" href="index.html">
       <img src="assets/logo.svg" alt="Logo Level‑Up Gamer" class="logo" />
@@ -31,20 +35,23 @@
       🛒 <span id="cart-count" aria-live="polite">0</span>
     </a>
   </header>
-  <main id="main-content">
-    
-<header class="page-header"><h1>Ingreso</h1></header>
-<form id="form-login" novalidate>
-  <label>Correo
-    <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
-  </label>
-  <label>Contraseña
-    <input name="password" type="password" minlength="4" maxlength="10" required />
-  </label>
-  <button class="btn" type="submit">Entrar</button>
-</form>
 
+  <main id="main-content" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+    <section class="form-wrapper" style="background-color: #111;padding: 2rem;border-radius: 10px;max-width: 400px;width: 100%;box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+      <h1>Ingreso</h1>
+      <form id="form-login" novalidate>
+        <label>Correo
+          <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" minlength="4" maxlength="10" required />
+        </label>
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+    </section>
   </main>
+
+
   <footer class="site-footer">
     <div class="cols">
       <section>
@@ -72,4 +79,5 @@
     <small>© Login 2025</small>
   </footer>
 </body>
+
 </html>
