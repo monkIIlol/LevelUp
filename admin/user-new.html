@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · Level‑Up Gamer</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script defer src="../js/validate.js"></script>
+  <script defer src="../js/admin.js"></script>
+</head>
+<body class="admin">
+<aside class="sidebar">
+  <h2>Admin</h2>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="products.html">Productos</a>
+    <a href="product-new.html">Nuevo producto</a>
+    <a href="users.html">Usuarios</a>
+    <a href="user-new.html">Nuevo usuario</a>
+  </nav>
+</aside>
+<main>
+
+<h1>Nuevo/Editar Usuario</h1>
+<form id="form-admin-user" novalidate>
+  <label>RUN <input name="run" required minlength="7" maxlength="9" placeholder="19011022K" /></label>
+  <label>Nombres <input name="firstName" required maxlength="50" /></label>
+  <label>Apellidos <input name="lastName" required maxlength="100" /></label>
+  <label>Correo <input name="email" type="email" required maxlength="100" /></label>
+  <label>Fecha nacimiento <input name="birthDate" type="date" /></label>
+  <label>Tipo de usuario
+    <select name="role" required>
+      <option value="">Selecciona…</option>
+      <option>Administrador</option>
+      <option>Vendedor</option>
+      <option>Cliente</option>
+    </select>
+  </label>
+  <label>Región <select name="region" id="admin-region" required></select></label>
+  <label>Comuna <select name="comuna" id="admin-comuna" required></select></label>
+  <label>Dirección <input name="address" required maxlength="300" /></label>
+  <button class="btn" type="submit">Guardar</button>
+</form>
+
+</main>
+</body>
+</html>

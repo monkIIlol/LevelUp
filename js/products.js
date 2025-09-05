@@ -1,0 +1,137 @@
+
+// Data
+const categories = [
+  { id: 'JM', name: 'Juegos de Mesa' },
+  { id: 'AC', name: 'Accesorios' },
+  { id: 'CO', name: 'Consolas' },
+  { id: 'CG', name: 'Computadores Gamers' },
+  { id: 'SG', name: 'Sillas Gamers' },
+  { id: 'MS', name: 'Mouse' },
+  { id: 'MP', name: 'Mousepad' },
+  { id: 'PP', name: 'Poleras Personalizadas' }
+];
+
+const products = [
+  { code:'JM001', category:'JM', name:'Catan', price:29990, img:'assets/hero.jpg', desc:'Juego de estrategia' },
+  { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'assets/hero.jpg', desc:'Colocación de losetas' },
+  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'assets/hero.jpg', desc:'Inalámbrico' },
+  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'assets/hero.jpg', desc:'Sonido envolvente' },
+  { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'assets/hero.jpg', desc:'Nueva generación' },
+  { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'assets/hero.jpg', desc:'Alto rendimiento' },
+  { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'assets/hero.jpg', desc:'Ergonómica' },
+  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'assets/hero.jpg', desc:'Sensor preciso' },
+  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'assets/hero.jpg', desc:'RGB' },
+  { code:'PP001', category:'PP', name:"Polera 'Level‑Up'", price:14990, img:'assets/hero.jpg', desc:'Personalizable' }
+];
+
+function money(clp){ return new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(clp); }
+
+function fillCategories(){
+  const sel = document.getElementById('filter-category');
+  categories.forEach(c=>{
+    const o=document.createElement('option');
+    o.value=c.id; o.textContent=c.name;
+    sel.appendChild(o);
+  });
+}
+
+function renderFeatured(){
+  const grid = document.getElementById('featured-grid');
+  grid.innerHTML = products.slice(0,4).map(p=>`<article class="card">
+    <img src="${p.img}" alt="${p.name}"/>
+    <h3>${p.name}</h3>
+    <p><strong>${money(p.price)}</strong></p>
+    <a class="btn" href="product.html?code=${encodeURIComponent(p.code)}">Ver</a>
+  </article>`).join('');
+}
+
+function renderProducts(){
+  const grid = document.getElementById('products-grid');
+  const q = (document.getElementById('filter-q').value||'').toLowerCase();
+  const cat = document.getElementById('filter-category').value;
+  const filtered = products.filter(p =>
+    (!cat || p.category===cat) &&
+    (!q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
+  );
+  grid.innerHTML = filtered.map(p=>`<article class="card">
+    <img src="${p.img}" alt="${p.name}"/>
+    <h3>${p.name}</h3>
+    <p>${p.desc}</p>
+    <p><strong>${money(p.price)}</strong></p>
+    <div class="row">
+      <a class="btn" href="product.html?code=${encodeURIComponent(p.code)}">Ver detalle</a>
+      <button class="btn" data-add="${p.code}">Añadir</button>
+    </div>
+  </article>`).join('');
+}
+
+function bindProductsFilters(){
+  document.getElementById('apply-filters').addEventListener('click', renderProducts);
+}
+
+function renderProductDetail(){
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  const p = products.find(x=>x.code===code) || products[0];
+  const el = document.getElementById('product-detail');
+  el.innerHTML = `<header><h1>${p.name}</h1></header>
+    <img src="${p.img}" alt="${p.name}" />
+    <p>${p.desc}</p>
+    <p><strong>${money(p.price)}</strong></p>
+    <button class="btn" data-add="${p.code}">Añadir al carrito</button>`;
+}
+
+function getCart(){ return JSON.parse(localStorage.getItem('cart') || '[]'); }
+function setCart(c){ localStorage.setItem('cart', JSON.stringify(c)); }
+
+function addToCart(code){
+  const p = products.find(x=>x.code===code);
+  if(!p) return;
+  const cart = getCart();
+  const idx = cart.findIndex(i=>i.code===code);
+  if(idx>=0){ cart[idx].qty += 1; } else { cart.push({code: p.code, name:p.name, price:p.price, qty:1}); }
+  setCart(cart);
+  const countEl = document.getElementById('cart-count');
+  if (countEl) countEl.textContent = cart.reduce((a,i)=>a+i.qty,0);
+  renderCart();
+}
+
+function renderCart(){
+  const cont = document.getElementById('cart-items');
+  if(!cont) return;
+  const cart = getCart();
+  if(cart.length===0){
+    document.getElementById('cart-empty').style.display='block';
+    document.getElementById('cart-total').textContent='Total: $0';
+    cont.innerHTML='';
+    return;
+  }
+  document.getElementById('cart-empty').style.display='none';
+  cont.innerHTML = cart.map(i=>`<div class="card row">
+    <span>${i.name} × ${i.qty}</span>
+    <span>${money(i.price*i.qty)}</span>
+    <span>
+      <button class="btn" data-dec="${i.code}">-</button>
+      <button class="btn" data-inc="${i.code}">+</button>
+      <button class="btn" data-rem="${i.code}">Eliminar</button>
+    </span>
+  </div>`).join('');
+  const total = cart.reduce((a,i)=>a+i.price*i.qty,0);
+  document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> ${money(total)}`;
+}
+
+function bindCart(){
+  document.body.addEventListener('click', (e)=>{
+    const add = e.target.closest('[data-add]');
+    const inc = e.target.closest('[data-inc]');
+    const dec = e.target.closest('[data-dec]');
+    const rem = e.target.closest('[data-rem]');
+    if(add){ addToCart(add.dataset.add); }
+    if(inc){ const c=getCart(); const i=c.find(x=>x.code===inc.dataset.inc); if(i){i.qty++; setCart(c); renderCart();} }
+    if(dec){ const c=getCart(); const i=c.find(x=>x.code===dec.dataset.dec); if(i){i.qty=Math.max(0,i.qty-1); if(i.qty===0){c.splice(c.indexOf(i),1);} setCart(c); renderCart();} }
+    if(rem){ const c=getCart().filter(x=>x.code!==rem.dataset.rem); setCart(c); renderCart(); }
+  });
+  const clearBtn = document.getElementById('cart-clear');
+  if (clearBtn) clearBtn.addEventListener('click', ()=>{ setCart([]); renderCart(); });
+  renderCart();
+}

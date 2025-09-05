@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home · Level‑Up Gamer</title>
+  <title>Registro · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -19,13 +19,13 @@
       <span>Level‑Up Gamer</span>
     </a>
     <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html" class="">Home</a>
       <a href="products.html" class="">Productos</a>
       <a href="blog.html" class="">Blogs</a>
       <a href="about.html" class="">Nosotros</a>
       <a href="contact.html" class="">Contacto</a>
       <a href="login.html" class="">Login</a>
-      <a href="register.html" class="">Registro</a>
+      <a href="register.html" class="active">Registro</a>
     </nav>
     <a class="cart" href="products.html#carrito" aria-label="Carrito">
       🛒 <span id="cart-count" aria-live="polite">0</span>
@@ -33,30 +33,53 @@
   </header>
   <main id="main-content">
     
-<section class="hero">
-  <div class="hero-text">
-    <h1>Sube de nivel tu setup</h1>
-    <p>Consolas, accesorios, PC gamers y más. Envíos a todo Chile.</p>
-    <a class="btn" href="products.html">Ver productos</a>
-  </div>
-  <figure class="hero-media">
-    <img src="assets/hero.jpg" alt="Setup gamer con neón" />
-    <figcaption>Foto referencial.</figcaption>
-  </figure>
-</section>
-
-<section class="featured">
-  <h2>Destacados</h2>
-  <div id="featured-grid" class="grid"></div>
-</section>
-
-<section class="promo-video">
-  <h2>Conoce nuestra tienda</h2>
-  <video controls width="640">
-    <source src="assets/intro.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
-  </video>
-</section>
+<header class="page-header"><h1>Registro</h1></header>
+<form id="form-register" novalidate>
+  <fieldset>
+    <legend>Datos de acceso</legend>
+    <label>Correo
+      <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
+      <small class="hint">Aceptados: @duoc.cl · @profesor.duoc.cl · @gmail.com</small>
+    </label>
+    <label>Contraseña
+      <input name="password" type="password" minlength="4" maxlength="10" required />
+      <small class="hint">Entre 4 y 10 caracteres</small>
+    </label>
+  </fieldset>
+  <fieldset>
+    <legend>Perfil</legend>
+    <label>RUN (sin puntos ni guion)
+      <input name="run" type="text" minlength="7" maxlength="9" required placeholder="19011022K" />
+    </label>
+    <label>Nombres
+      <input name="firstName" type="text" maxlength="50" required />
+    </label>
+    <label>Apellidos
+      <input name="lastName" type="text" maxlength="100" required />
+    </label>
+    <label>Fecha nacimiento
+      <input name="birthDate" type="date" />
+    </label>
+    <label>Tipo de usuario
+      <select name="role" required>
+        <option value="">Selecciona…</option>
+        <option>Cliente</option>
+        <option>Vendedor</option>
+        <option>Administrador</option>
+      </select>
+    </label>
+    <label>Región
+      <select name="region" id="region-select" required></select>
+    </label>
+    <label>Comuna
+      <select name="comuna" id="comuna-select" required></select>
+    </label>
+    <label>Dirección
+      <input name="address" type="text" maxlength="300" required />
+    </label>
+  </fieldset>
+  <button class="btn" type="submit">Crear cuenta</button>
+</form>
 
   </main>
   <footer class="site-footer">
@@ -83,7 +106,7 @@
         </ul>
       </section>
     </div>
-    <small>© Home 2025</small>
+    <small>© Registro 2025</small>
   </footer>
 </body>
 </html>
