@@ -12,15 +12,15 @@ const categories = [
 ];
 
 const products = [
-  { code:'JM001', category:'JM', name:'Catan', price:29990, img:'assets/hero.jpg', desc:'Juego de estrategia' },
-  { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'assets/hero.jpg', desc:'Colocación de losetas' },
-  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'assets/hero.jpg', desc:'Inalámbrico' },
-  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'assets/hero.jpg', desc:'Sonido envolvente' },
-  { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'assets/hero.jpg', desc:'Nueva generación' },
-  { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'assets/hero.jpg', desc:'Alto rendimiento' },
-  { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'assets/hero.jpg', desc:'Ergonómica' },
-  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'assets/hero.jpg', desc:'Sensor preciso' },
-  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'assets/hero.jpg', desc:'RGB' },
+  { code:'JM001', category:'JM', name:'Catan', price:29990, img:'img/catan.png', desc:'Juego de estrategia' },
+  { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'img/carcasone.png', desc:'Colocación de losetas' },
+  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'img/controlxboxseries.png', desc:'Inalámbrico' },
+  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'img/hyperxcloudII.png', desc:'Sonido envolvente' },
+  { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'img/pley5.png', desc:'Nueva generación' },
+  { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'img/pcgamer.png', desc:'Alto rendimiento' },
+  { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'img/sillagamer.png', desc:'Ergonómica' },
+  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'img/logitechg502.png', desc:'Sensor preciso' },
+  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'img/mousepadrazer.jpg', desc:'RGB' },
   { code:'PP001', category:'PP', name:"Polera 'Level‑Up'", price:14990, img:'assets/hero.jpg', desc:'Personalizable' }
 ];
 
