@@ -74,3 +74,18 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
   min-width: 200px;
 }
 /*Footer*/
+
+.card img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+#products-grid .card img,
+#featured-grid .card img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
