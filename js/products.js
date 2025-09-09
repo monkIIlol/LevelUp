@@ -14,13 +14,13 @@ const categories = [
 const products = [
   { code:'JM001', category:'JM', name:'Catan', price:29990, img:'img/catan.png', desc:'Juego de estrategia' },
   { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'img/carcasone.png', desc:'Colocación de losetas' },
-  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'img/controlxboxseries.png', desc:'Inalámbrico' },
-  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'img/hyperxcloudII.png', desc:'Sonido envolvente' },
+  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'img/xbosseries.png', desc:'Inalámbrico' },
+  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'img/hyperxcloud.png', desc:'Sonido envolvente' },
   { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'img/pley5.png', desc:'Nueva generación' },
   { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'img/pcgamer.png', desc:'Alto rendimiento' },
   { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'img/sillagamer.png', desc:'Ergonómica' },
-  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'img/logitechg502.png', desc:'Sensor preciso' },
-  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'img/mousepadrazer.jpg', desc:'RGB' },
+  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'img/logitchg502.png', desc:'Sensor preciso' },
+  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'img/mousepadrazer.png', desc:'RGB' },
   { code:'PP001', category:'PP', name:"Polera 'Level‑Up'", price:14990, img:'assets/hero.jpg', desc:'Personalizable' }
 ];
 
@@ -107,18 +107,24 @@ function renderCart(){
     return;
   }
   document.getElementById('cart-empty').style.display='none';
-  cont.innerHTML = cart.map(i=>`<div class="card row">
-    <span>${i.name} × ${i.qty}</span>
-    <span>${money(i.price*i.qty)}</span>
-    <span>
-      <button class="btn" data-dec="${i.code}">-</button>
-      <button class="btn" data-inc="${i.code}">+</button>
-      <button class="btn" data-rem="${i.code}">Eliminar</button>
-    </span>
-  </div>`).join('');
+
+  cont.innerHTML = cart.map(i=>`
+    <div class="cart-card">
+      <h3>${i.name} <small>(${i.code})</small></h3>
+      <p>Cantidad: ${i.qty}</p>
+      <p>Precio: ${money(i.price * i.qty)}</p>
+      <div class="cart-actions">
+        <button class="btn btn-dec" data-dec="${i.code}">−</button>
+        <button class="btn btn-inc" data-inc="${i.code}">+</button>
+        <button class="btn btn-rem" data-rem="${i.code}">Quitar</button>
+      </div>
+    </div>
+  `).join('');
+
   const total = cart.reduce((a,i)=>a+i.price*i.qty,0);
   document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> ${money(total)}`;
 }
+
 
 function bindCart(){
   document.body.addEventListener('click', (e)=>{
@@ -135,3 +141,5 @@ function bindCart(){
   if (clearBtn) clearBtn.addEventListener('click', ()=>{ setCart([]); renderCart(); });
   renderCart();
 }
+
+
