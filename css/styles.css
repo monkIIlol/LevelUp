@@ -296,3 +296,234 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
   top: -8px;
   right: -12px;
 }
+
+
+/*LO QUE ES DE NOSOTROSSSS*/
+
+/* Misión y Visión  */
+.mission-vision {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  justify-content: center;
+}
+.mission-vision .card {
+  flex: 1 1 280px;
+  background: #0a0a0a;
+  border: 1px solid #111;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.mission-vision .card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/*  Valores  */
+.values {
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+.values ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+}
+.values ul li {
+  background: #111;
+  border: 1px solid #222;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.values ul li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,255,128,0.3);
+}
+
+/*  Equipo  */
+.team {
+  padding: 1rem 1.25rem;
+}
+.team ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+}
+.team ul li {
+  background: #0a0a0a;
+  border: 1px solid #111;
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+  flex: 1 1 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.team ul li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,255,128,0.3);
+}
+.team ul li img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+/*  Testimonios  */
+.testimonials {
+  padding: 2rem 1.25rem;
+  background: #0b0b0b;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  text-align: center;
+}
+.testimonials h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+.testimonials blockquote {
+  background: #111;
+  border-left: 4px solid #00ff80;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  font-style: italic;
+  border-radius: var(--radius);
+}
+
+/*  CTA */
+.cta {
+  text-align: center;
+  margin: 2rem 0;
+}
+.cta .btn-primary {
+  background: var(--accent-2);
+  color: #000;
+  font-weight: 800;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.cta .btn-primary:hover {
+  background: #33ff33;
+  transform: translateY(-3px);
+}
+
+/*  Historia  */
+.history {
+  padding: 1rem 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.history h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+.history p {
+  font-size: 1.1rem;
+  color: var(--fg-2);
+}
+
+/*  Responsive  */
+@media (max-width: 800px) {
+  .mission-vision, .team ul, .values ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cta .btn-primary {
+    width: 80%;
+  }
+}
+
+
+/* BLOGS*/
+
+/* -------------------- Blogs -------------------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 1.25rem;
+}
+
+.blog-grid .card {
+  background: #0a0a0a;
+  border: 1px solid #111;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 255, 128, 0.4);
+}
+
+.blog-grid .card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-grid .card h3 {
+  font-size: 1.2rem;
+  margin: 0.75rem 1rem 0.5rem;
+}
+
+.blog-grid .card h3 a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.blog-grid .card h3 a:hover {
+  color: var(--accent-2);
+  text-shadow: 0 0 6px rgba(0, 255, 128, 0.7);
+}
+
+.blog-grid .card p {
+  margin: 0 1rem 1rem;
+  color: var(--fg-2);
+  font-size: 0.95rem;
+}
+
+.blog-grid .btn-readmore {
+  align-self: flex-start;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent-2);
+  color: #000;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.blog-grid .btn-readmore:hover {
+  background: #33ff33;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
