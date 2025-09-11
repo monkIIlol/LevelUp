@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -32,31 +36,67 @@
     </a>
   </header>
   <main id="main-content">
-    
-<section class="hero">
-  <div class="hero-text">
-    <h1>Sube de nivel tu setup</h1>
-    <p>Consolas, accesorios, PC gamers y más. Envíos a todo Chile.</p>
-    <a class="btn" href="products.html">Ver productos</a>
-  </div>
-  <figure class="hero-media">
-    <img src="assets/hero.jpg" alt="Setup gamer con neón" />
-    <figcaption>Foto referencial.</figcaption>
-  </figure>
-</section>
 
-<section class="featured">
-  <h2>Destacados</h2>
-  <div id="featured-grid" class="grid"></div>
-</section>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Sube de nivel tu setup</h1>
+        <p>Consolas, accesorios, PC gamers y más. Envíos a todo Chile.</p>
+        <a class="btn" href="products.html">Ver productos</a>
+      </div>
+      <figure class="hero-media">
+        <img src="assets/hero.jpg" alt="Setup gamer con neón" />
+        <figcaption>Foto referencial.</figcaption>
+      </figure>
+    </section>
 
-<section class="promo-video">
-  <h2>Conoce nuestra tienda</h2>
-  <video controls width="640">
-    <source src="assets/intro.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
-  </video>
-</section>
+    <section class="featured">
+      <h2>Destacados</h2>
+      <div id="featured-grid" class="grid"></div>
+    </section>
+
+    <div class="ofertas">
+      <h2>🔥 Ofertas del Mes 🔥</h2>
+
+      <div class="ofertas-grid">
+
+        <div class="card">
+          <img src="img/sillagamer.png" alt="Silla Gamer" style="width:100%">
+          <h3>Silla Secretlab Titan</h3>
+          <p>Antes: <s>$399.990</s></p>
+          <p><b>$349.990</b></p>
+
+          <button class="btn" data-add="SG001">Añadir</button>
+        </div>
+
+        <div class="card">
+          <img src="img/logitchg502.png" alt="Mouse Logitech" style="width:100%">
+          <h3>Logitech G502 Hero</h3>
+          <p>Antes: <s>$59.990</s></p>
+          <p><b>$49.990</b></p>
+
+          <button class="btn" data-add="MS001">Añadir</button>
+        </div>
+
+        <div class="card">
+          <img src="img/mousepadrazer.png" alt="Mousepad Razer" style="width:100%">
+          <h3>Razer Goliathus Ext.</h3>
+          <p>Antes: <s>$39.990</s></p>
+          <p><b>$29.990</b></p>
+
+          <button class="btn" data-add="MP001">Añadir</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <section class="promo-video">
+      <h2>Conoce nuestra tienda</h2>
+      <video controls width="640">
+        <source src="assets/intro.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </section>
 
   </main>
   <footer class="site-footer">
@@ -86,4 +126,5 @@
     <small>© Home 2025</small>
   </footer>
 </body>
+
 </html>
