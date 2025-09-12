@@ -564,6 +564,80 @@ main {
   }
 }
 
+/* Estilos para artículos de blog */
+.prose {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #111; /* fondo oscuro gamer */
+  border-radius: 12px;
+  color: #eee;
+  line-height: 1.7;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.prose h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #00ff80; /* cian gamer */
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(0,255,255,0.7);
+}
+
+.prose h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #ff4081; /* rosa gamer */
+  border-left: 4px solid #ff4081;
+  padding-left: 0.6rem;
+  text-shadow: 0 0 6px rgba(255,64,129,0.6);
+}
+
+.prose p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+}
+
+.prose em {
+  color: #0ff;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.prose strong {
+  color: #ff4081;
+}
+
+/* Botón volver */
+.prose + .btn {
+  display: inline-block;
+  margin: 1rem 0 0 0;
+  background: #00ff80;
+  color: #111;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.prose + .btn:hover {
+  background: #ff4081;
+  color: #fff;
+}
+
+
 
 /* Top Ventas */
 .top-ventas, .marcas {
