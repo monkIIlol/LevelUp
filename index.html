@@ -32,9 +32,9 @@
       <a href="login.html" class="">Login</a>
       <a href="register.html" class="">Registro</a>
     </nav>
-    
+
     <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-    
+
     <a class="cart" href="products.html#carrito" aria-label="Carrito">
       🛒 <span id="cart-count" aria-live="polite">0</span>
     </a>
@@ -47,11 +47,33 @@
         <p>Consolas, accesorios, PC gamers y más. Envíos a todo Chile.</p>
         <a class="btn" href="products.html">Ver productos</a>
       </div>
-      <figure class="hero-media">
-        <img src="assets/hero.jpg" alt="Setup gamer con neón" />
-        <figcaption>Foto referencial.</figcaption>
+
+
+      <figure class="hero-media" aria-label="Galería destacada">
+        <div class="carousel" data-autoplay="true" data-interval="5000">
+          <button class="nav prev" aria-label="Imagen anterior">❮</button>
+          <ul class="track" aria-live="polite">
+            <li class="slide is-active">
+              <img src="img/qarias.jpg" alt="Setup gamer con neón" />
+            </li>
+            <li class="slide">
+              <img src="img/qarias.jpg" alt="Setup gamer con neón" />
+            </li>
+            <li class="slide">
+              <img src="img/qarias.jpg" alt="Setup gamer con neón" />
+            </li>
+          </ul>
+          
+          <button class="nav next" aria-label="Imagen siguiente">❯</button>
+          <div class="dots" role="tablist" aria-label="Ir a imagen">
+            <button class="dot is-active" role="tab" aria-selected="true" aria-label="1 de 3"></button>
+            <button class="dot" role="tab" aria-selected="false" aria-label="2 de 3"></button>
+            <button class="dot" role="tab" aria-selected="false" aria-label="3 de 3"></button>
+          </div>
+        </div>
       </figure>
     </section>
+
 
     <section class="featured">
       <h2>⭐ Destacados ⭐</h2>
@@ -171,8 +193,77 @@
         </ul>
       </section>
     </div>
-    <small>© Home 2025</small>
   </footer>
+  <script>
+(function () {
+  const carousel = document.querySelector('.hero-media .carousel');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.track');
+  const slides = [...carousel.querySelectorAll('.slide')];
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = [...carousel.querySelectorAll('.dot')];
+
+  let index = 0;
+  let timer = null;
+  const autoplay = carousel.dataset.autoplay === 'true';
+  const interval = Number(carousel.dataset.interval || 5000);
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === index));
+    dots.forEach((d, k) => {
+      d.classList.toggle('is-active', k === index);
+      d.setAttribute('aria-selected', String(k === index));
+    });
+  }
+
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  // Botones
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Dots
+  dots.forEach((d, k) => d.addEventListener('click', () => goTo(k)));
+
+  // Teclado (izq/der)
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+  carousel.setAttribute('tabindex', '0');
+
+  // Autoplay (pausa al interactuar)
+  function start() {
+    if (!autoplay) return;
+    stop();
+    timer = setInterval(next, interval);
+  }
+  function stop() { if (timer) clearInterval(timer); }
+
+  ['mouseenter', 'focusin', 'touchstart'].forEach(ev => carousel.addEventListener(ev, stop));
+  ['mouseleave', 'focusout', 'touchend'].forEach(ev => carousel.addEventListener(ev, start));
+
+  // Swipe básico
+  let startX = null;
+  carousel.addEventListener('pointerdown', (e) => (startX = e.clientX));
+  carousel.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
+    startX = null;
+  });
+
+  // Init
+  goTo(0);
+  start();
+})();
+</script>
+
 </body>
 
 </html>
