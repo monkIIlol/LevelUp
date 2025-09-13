@@ -758,16 +758,17 @@ main {
   will-change: transform;
 }
 .hero-media .slide {
-  flex: 0 0 100%; /* Esto es CRÍTICO: ocupa siempre el 100% del contenedor */
-  max-width: 100%;
-  height: 100%;
+  flex: 0 0 100%;
   width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 .hero-media .slide img {
   flex-shrink: 0;
   width: 100%;
   height: 100%;
-
+  object-fit: contain;    /*Elegir entre 'cover' o 'contain'*/
   object-position: center;
   display: block;
   border-radius: 0;   /* por si acaso alguna imagen trae borde */
