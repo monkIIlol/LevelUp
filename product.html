@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Detalle de producto · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -35,9 +39,30 @@
     </a>
   </header>
   <main id="main-content">
-    
-<article id="product-detail"></article>
-<a class="btn" href="products.html">← Volver a productos</a>
+
+    <article id="product-detail">
+      <!-- Ya tienes el header y la imagen -->
+      <header>
+        <h1>Nombre del producto</h1>
+      </header>
+      <img src="img/ejemplo.png" alt="Nombre del producto" />
+      <p id="product-desc">Descripción del producto…</p>
+
+      <!-- Aquí van los detalles -->
+      <section id="product-details">
+        <h3>Detalles</h3>
+        <ul>
+          <li>Jugadores: 2-4</li>
+          <li>Edad recomendada: 8+</li>
+          <li>Duración: 30-60 min</li>
+        </ul>
+      </section>
+
+      <button class="btn" data-add="CODIGO">Añadir al carrito</button>
+    </article>
+
+
+    <a class="btn" href="products.html">← Volver a productos</a>
 
   </main>
   <footer class="site-footer">
@@ -67,4 +92,5 @@
     <small>© Detalle de producto 2025</small>
   </footer>
 </body>
+
 </html>
