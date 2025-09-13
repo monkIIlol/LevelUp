@@ -12,16 +12,16 @@ const categories = [
 ];
 
 const products = [
-  { code:'JM001', category:'JM', name:'Catan', price:29990, img:'img/catan.png', desc:'Juego de estrategia' },
-  { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'img/carcasone.png', desc:'Colocación de losetas' },
-  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'img/controlxboxseries.png', desc:'Inalámbrico' },
-  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'img/hyperxcloudII.png', desc:'Sonido envolvente' },
-  { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'img/pley5.png', desc:'Nueva generación' },
-  { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'img/pcgamer.png', desc:'Alto rendimiento' },
-  { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'img/sillagamer.png', desc:'Ergonómica' },
-  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'img/logitechg502.png', desc:'Sensor preciso' },
-  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'img/mousepadrazer.jpg', desc:'RGB' },
-  { code:'PP001', category:'PP', name:"Polera 'Level‑Up'", price:14990, img:'assets/hero.jpg', desc:'Personalizable' }
+  { code:'JM001', category:'JM', name:'Catan', price:29990, img:'img/catan.png', desc:'Juego de estrategia', details: ['Jugadores: 3-4', 'Edad: 10+', 'Duración: 60-120 min', 'Juego de comercio y construcción'] },
+  { code:'JM002', category:'JM', name:'Carcassonne', price:24990, img:'img/carcasone.png', desc:'Colocación de losetas', details: ['Jugadores: 2-5', 'Edad: 8+', 'Duración: 35-45 min', 'Juego de colocación de losetas'] },
+  { code:'AC001', category:'AC', name:'Control Xbox Series', price:59990, img:'img/xbosseries.png', desc:'Inalámbrico', details: ['Conexión: Inalámbrica', 'Compatibilidad: Xbox y PC', 'Batería: Recargable'] },
+  { code:'AC002', category:'AC', name:'HyperX Cloud II', price:79990, img:'img/hyperxcloud.png', desc:'Sonido envolvente', details: ['Conexión: 3.5mm y USB', 'Micrófono: Desmontable', 'Compatibilidad: PC y Consolas'] },
+  { code:'CO001', category:'CO', name:'PlayStation 5', price:549990, img:'img/pley5.png', desc:'Nueva generación', details: ['Almacenamiento: 825GB SSD', 'Resolución: Hasta 4K', 'Color: Blanco', 'Compatibilidad con juegos PS4'] },
+  { code:'CG001', category:'CG', name:'PC Gamer ROG Strix', price:1299990, img:'img/pcgamer.png', desc:'Alto rendimiento', details: ['CPU: Intel i7', 'RAM: 16GB', 'GPU: RTX 3070', 'Almacenamiento: 1TB SSD'] },
+  { code:'SG001', category:'SG', name:'Silla Secretlab Titan', price:349990, img:'img/sillagamer.png', desc:'Ergonómica', details: ['Altura ajustable', 'Reposabrazos 4D', 'Reclinable hasta 165°', 'Material: Cuero PU premium'] },
+  { code:'MS001', category:'MS', name:'Logitech G502 HERO', price:49990, img:'img/logitchg502.png', desc:'Sensor preciso', details: ['DPI: 100-16000', 'Botones programables: 11', 'Peso ajustable', 'Iluminación RGB'] },
+  { code:'MP001', category:'MP', name:'Razer Goliathus Ext.', price:29990, img:'img/mousepadrazer.png', desc:'RGB', details: ['Tamaño: XL', 'Base antideslizante', 'Superficie de microtextura', 'Iluminación Chroma RGB'] },
+  { code:'PP001', category:'PP', name:"Polera 'Level‑Up'", price:14990, img:'assets/hero.jpg', desc:'Personalizable', details: ['Material: Algodón 100%', 'Tallas: S, M, L, XL', 'Personalizable con tu nombre', 'Color: Negro'] }
 ];
 
 function money(clp){ return new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(clp); }
@@ -107,18 +107,24 @@ function renderCart(){
     return;
   }
   document.getElementById('cart-empty').style.display='none';
-  cont.innerHTML = cart.map(i=>`<div class="card row">
-    <span>${i.name} × ${i.qty}</span>
-    <span>${money(i.price*i.qty)}</span>
-    <span>
-      <button class="btn" data-dec="${i.code}">-</button>
-      <button class="btn" data-inc="${i.code}">+</button>
-      <button class="btn" data-rem="${i.code}">Eliminar</button>
-    </span>
-  </div>`).join('');
+
+  cont.innerHTML = cart.map(i=>`
+    <div class="cart-card">
+      <h3>${i.name} <small>(${i.code})</small></h3>
+      <p>Cantidad: ${i.qty}</p>
+      <p>Precio: ${money(i.price * i.qty)}</p>
+      <div class="cart-actions">
+        <button class="btn btn-dec" data-dec="${i.code}">−</button>
+        <button class="btn btn-inc" data-inc="${i.code}">+</button>
+        <button class="btn btn-rem" data-rem="${i.code}">Quitar</button>
+      </div>
+    </div>
+  `).join('');
+
   const total = cart.reduce((a,i)=>a+i.price*i.qty,0);
   document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> ${money(total)}`;
 }
+
 
 function bindCart(){
   document.body.addEventListener('click', (e)=>{
@@ -135,3 +141,26 @@ function bindCart(){
   if (clearBtn) clearBtn.addEventListener('click', ()=>{ setCart([]); renderCart(); });
   renderCart();
 }
+
+function renderProductDetail(){
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  const p = products.find(x=>x.code===code) || products[0];
+  const el = document.getElementById('product-detail');
+
+  let detailsHTML = '';
+  if (p.details){
+    detailsHTML = `<section id="product-details">
+      <h3>Detalles</h3>
+      <ul>${p.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    </section>`;
+  }
+
+  el.innerHTML = `<header><h1>${p.name}</h1></header>
+    <img src="${p.img}" alt="${p.name}" />
+    <p>${p.desc}</p>
+    ${detailsHTML}
+    <button class="btn" data-add="${p.code}">Añadir al carrito</button>`;
+}
+
+
