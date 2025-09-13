@@ -336,6 +336,40 @@ main {
   right: -12px;
 }
 
+/* Por defecto, el botón está oculto */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--accent-2);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Solo se muestra cuando la ventana es pequeña */
+@media (max-width: 900px) {
+  .main-nav {
+    display: none; /* ocultamos la nav normal */
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    position: absolute;
+    top: 64px; /* ajusta según altura del header */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .main-nav.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block; /* ahora sí aparece */
+  }
+}
+
+
 
 /*LO QUE ES DE NOSOTROSSSS*/
 
