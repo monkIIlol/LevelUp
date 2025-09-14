@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -34,23 +38,28 @@
       🛒 <span id="cart-count" aria-live="polite">0</span>
     </a>
   </header>
-  <main id="main-content">
-    
-<header class="page-header"><h1>Contacto</h1></header>
-<form id="form-contact" novalidate>
-  <label>Nombre
-    <input name="name" type="text" maxlength="100" required />
-  </label>
-  <label>Correo
-    <input name="email" type="email" maxlength="100" required placeholder="tucorreo@gmail.com" />
-  </label>
-  <label>Comentario
-    <textarea name="comment" maxlength="500" required></textarea>
-  </label>
-  <button class="btn" type="submit">Enviar</button>
-</form>
 
+  <main id="main-content">
+    <header class="page-header">
+      <h1>Contacto</h1>
+    </header>
+
+    <div class="form-container">
+      <form>
+        <label>Nombre
+          <input name="name" type="text" maxlength="100" required />
+        </label>
+        <label>Correo
+          <input name="email" type="email" maxlength="100" required placeholder="tucorreo@gmail.com" />
+        </label>
+        <label>Comentario
+          <textarea name="comment" maxlength="500" required></textarea>
+        </label>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="cols">
       <section>
@@ -78,4 +87,5 @@
     <small>© Contacto 2025</small>
   </footer>
 </body>
+
 </html>
