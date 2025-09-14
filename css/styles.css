@@ -168,7 +168,7 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
 }
 
 .hero-overlay .btn {
-  background: #00ff00; /* verde gamer */
+  background: #00ff80; /* verde gamer */
   color: black;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
@@ -177,7 +177,7 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
 }
 
 .hero-overlay .btn:hover {
-  background: #00cc00;
+  background: #39FF14;
 }
 
 /*DESTACADIS, OFERTAS DEL MES Y TOP VENTAS */
@@ -192,7 +192,7 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
 
 .featured h2 {
   font-family: 'Orbitron', sans-serif;
-  color: #0f0; /* verde gamer */
+  color: #00ff80; /* verde gamer */
   margin-bottom: 20px;
 }
 
@@ -391,11 +391,11 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
   transition: background 0.2s;
 }
 .ofertas .card button:hover {
-  background: #00cc66;
+  background: #39FF14;
 }
 
 .top-ventas .card button:hover {
-  background: #00cc66;
+  background: #39FF14;
 }
 
 .top-ventas .card button {
@@ -467,7 +467,7 @@ main {
   transition: color 0.2s, text-shadow 0.2s;
 }
 .main-nav a:hover {
-  color: #00ff80;
+  color: #39FF14;
   text-shadow: 0 0 8px rgba(0,255,128,0.8);
 }
 .main-nav .active {
@@ -677,7 +677,7 @@ main {
   margin: 2rem 0;
 }
 .cta .btn-primary {
-  background: var(--accent-2);
+  background: #00ff80;
   color: #000;
   font-weight: 800;
   padding: 1rem 2rem;
@@ -687,7 +687,7 @@ main {
   transition: background 0.2s, transform 0.2s;
 }
 .cta .btn-primary:hover {
-  background: #33ff33;
+  background: #39FF14;
   transform: translateY(-3px);
 }
 
@@ -774,7 +774,7 @@ main {
   align-self: flex-start;
   margin: 0 1rem 1rem;
   padding: 0.5rem 1rem;
-  background: var(--accent-2);
+  background: #00ff80;
   color: #000;
   text-decoration: none;
   border-radius: 999px;
@@ -783,7 +783,7 @@ main {
 }
 
 .blog-grid .btn-readmore:hover {
-  background: #33ff33;
+  background: #39FF14;
   transform: translateY(-2px);
 }
 
@@ -916,7 +916,7 @@ main {
 }
 
 #product-detail .btn:hover {
-  background-color: #00cc66;
+  background-color: #39FF14;
 }
 
 #product-details {
@@ -955,7 +955,7 @@ main {
 
 .store-location h2 {
   font-family: 'Orbitron', sans-serif;
-  color: #0f0;
+  color: #00ff80;
   margin-bottom: 12px;
 }
 
@@ -966,7 +966,7 @@ main {
 }
 
 .store-location .map-container {
-  border: 2px solid #0f0;
+  border: 2px solid #00ff80;
   border-radius: 8px;
   overflow: hidden;
 }
