@@ -538,6 +538,19 @@ main {
   }
 }
 
+/*ALTURA DE LAS CARDS*/
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* reparte contenido */
+  min-height: 340px; /* misma altura para todas */
+}
+
+.card img {
+  max-height: 150px;
+  object-fit: contain;
+}
+
 
 
 /*LO QUE ES DE NOSOTROSSSS*/
