@@ -1,8 +1,9 @@
 
-// Simple regiones/comunas data (subset example)
+// Simple regiones/comunas 
 const regiones = {
-  'Metropolitana de Santiago': ['Santiago','Maipú','Puente Alto'],
-  'Valparaíso': ['Valparaíso','Viña del Mar','Quilpué']
+    'Metropolitana de Santiago': ['Santiago','San bernardo', 'Maipú','Puente Alto'],
+  'Valparaíso': ['Valparaíso','Viña del Mar','Quilpué'],
+  'Concepción': ['Concepción', 'Hualpen', 'Talcahuano', 'Tomé'] 
 };
 
 function fillRegions(regionSel, comunaSel){
@@ -124,3 +125,6 @@ document.addEventListener('submit', (e)=>{
     if(ok){ alert('Usuario válido ✅'); }
   }
 });
+
+
+
