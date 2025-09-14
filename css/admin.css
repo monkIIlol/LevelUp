@@ -1,0 +1,171 @@
+
+/* admin.css */
+
+/* Reset básico y tipografía */
+body.admin {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background: #1c1c1c;
+  border-right: 2px solid #00ff99;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  color: #00ff99;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  margin: 0.3rem 0;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #00ff99;
+  color: #121212;
+}
+
+/* Main area */
+main {
+  margin-left: 240px;
+  padding: 2rem;
+}
+
+/* Dashboard cards */
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: #1f1f1f;
+  padding: 1.5rem;
+  border-left: 5px solid #00ff99;
+  border-radius: 8px;
+  flex: 1 1 200px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #333;
+  text-align: left;
+}
+
+th {
+  background: #1c1c1c;
+  color: #00ff99;
+}
+
+tr:hover {
+  background: #2c2c2c;
+}
+
+/* Buttons */
+.btn {
+  background: #00ff99;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #00cc77;
+}
+
+/* Small buttons for edit/delete */
+.btn-small {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  margin: 0 2px;
+}
+
+.btn-edit { background: #007bff; color: #fff; }
+.btn-del { background: #ff4444; color: #fff; }
+
+/* Forms */
+form {
+  background: #1f1f1f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #121212;
+  color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #00ff99;
+  outline: none;
+}
+
+/* Errors */
+.error {
+  color: #ff5555;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .sidebar {
+    width: 180px;
+    padding: 1rem;
+  }
+
+  main {
+    margin-left: 200px;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+}
