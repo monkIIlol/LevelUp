@@ -21,7 +21,7 @@ const products = [
   { code: 'SG001', category: 'SG', name: 'Silla Secretlab Titan', price: 349990, img: 'img/sillagamer.png', desc: 'Ergonómica', details: ['Altura ajustable', 'Reposabrazos 4D', 'Reclinable hasta 165°', 'Material: Cuero PU premium'] },
   { code: 'MS001', category: 'MS', name: 'Logitech G502 HERO', price: 49990, img: 'img/logitchg502.png', desc: 'Sensor preciso', details: ['DPI: 100-16000', 'Botones programables: 11', 'Peso ajustable', 'Iluminación RGB'] },
   { code: 'MP001', category: 'MP', name: 'Razer Goliathus Ext.', price: 29990, img: 'img/mousepadrazer.png', desc: 'RGB', details: ['Tamaño: XL', 'Base antideslizante', 'Superficie de microtextura', 'Iluminación Chroma RGB'] },
-  { code: 'PP001', category: 'PP', name: "Polera 'Level‑Up'", price: 14990, img: 'assets/hero.jpg', desc: 'Personalizable', details: ['Material: Algodón 100%', 'Tallas: S, M, L, XL', 'Personalizable con tu nombre', 'Color: Negro'] }
+  { code: 'PP001', category: 'PP', name: "Polera 'Level‑Up'", price: 14990, img: 'img/polera-negra.png', desc: 'Personalizable', details: ['Material: Algodón 100%', 'Tallas: S, M, L, XL', 'Personalizable con tu nombre', 'Color: Negro'] }
 ];
 
 const descuento = parseInt(localStorage.getItem("descuento")) || 0;
