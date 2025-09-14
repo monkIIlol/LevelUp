@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Registro · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -34,57 +38,61 @@
       🛒 <span id="cart-count" aria-live="polite">0</span>
     </a>
   </header>
-  <main id="main-content">
-    
-<header class="page-header"><h1>Registro</h1></header>
-<form id="form-register" novalidate>
-  <fieldset>
-    <legend>Datos de acceso</legend>
-    <label>Correo
-      <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
-      <small class="hint">Aceptados: @duoc.cl · @profesor.duoc.cl · @gmail.com</small>
-    </label>
-    <label>Contraseña
-      <input name="password" type="password" minlength="4" maxlength="10" required />
-      <small class="hint">Entre 4 y 10 caracteres</small>
-    </label>
-  </fieldset>
-  <fieldset>
-    <legend>Perfil</legend>
-    <label>RUN (sin puntos ni guion)
-      <input name="run" type="text" minlength="7" maxlength="9" required placeholder="19011022K" />
-    </label>
-    <label>Nombres
-      <input name="firstName" type="text" maxlength="50" required />
-    </label>
-    <label>Apellidos
-      <input name="lastName" type="text" maxlength="100" required />
-    </label>
-    <label>Fecha nacimiento
-      <input name="birthDate" type="date" />
-    </label>
-    <label>Tipo de usuario
-      <select name="role" required>
-        <option value="">Selecciona…</option>
-        <option>Cliente</option>
-        <option>Vendedor</option>
-        <option>Administrador</option>
-      </select>
-    </label>
-    <label>Región
-      <select name="region" id="region-select" required></select>
-    </label>
-    <label>Comuna
-      <select name="comuna" id="comuna-select" required></select>
-    </label>
-    <label>Dirección
-      <input name="address" type="text" maxlength="300" required />
-    </label>
-  </fieldset>
-  <button class="btn" type="submit">Crear cuenta</button>
-</form>
 
+  <main id="main-content">
+    <header class="page-header">
+      <h1>Registro</h1>
+    </header>
+
+    <div class="form-container">
+      <form>
+        <fieldset>
+          <legend>Datos de acceso</legend>
+          <label>Correo
+            <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
+          </label>
+          <label>Contraseña
+            <input name="password" type="password" minlength="4" maxlength="10" required />
+            <small class="hint">Entre 4 y 10 caracteres</small>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Perfil</legend>
+          <label>RUN (sin puntos ni guion)
+            <input name="run" type="text" minlength="7" maxlength="9" required placeholder="19011022K" />
+          </label>
+          <label>Nombres
+            <input name="firstName" type="text" maxlength="50" required />
+          </label>
+          <label>Apellidos
+            <input name="lastName" type="text" maxlength="100" required />
+          </label>
+          <label>Fecha nacimiento
+            <input name="birthDate" type="date" />
+          </label>
+          <label>Tipo de usuario
+            <select name="role" required>
+              <option value="">Selecciona…</option>
+              <option>Cliente</option>
+              <option>Vendedor</option>
+              <option>Administrador</option>
+            </select>
+          </label>
+          <label>Región
+            <select name="region" id="region-select" required></select>
+          </label>
+          <label>Comuna
+            <select name="comuna" id="comuna-select" required></select>
+          </label>
+          <label>Dirección
+            <input name="address" type="text" maxlength="300" required />
+          </label>
+        </fieldset>
+        <button class="btn" type="submit">Crear cuenta</button>
+      </form>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="cols">
       <section>
@@ -112,4 +120,5 @@
     <small>© Registro 2025</small>
   </footer>
 </body>
+
 </html>
