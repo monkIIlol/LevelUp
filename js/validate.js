@@ -16,9 +16,9 @@ function fillRegions(regionSel, comunaSel){
   });
 }
 
-// Email domain allowlist
+// Permitir correos de todo tipo
 function emailValido(valor){
-  const ok = /@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i.test(valor);
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
   return ok;
 }
 

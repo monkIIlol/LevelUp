@@ -39,10 +39,13 @@
     </a>
   </header>
 
-  <main id="main-content" style="flex: 1; display: flex; justify-content: center; align-items: center;">
-    <section class="form-wrapper" style="background-color: #111;padding: 2rem;border-radius: 10px;max-width: 400px;width: 100%;box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+  <main id="main-content">
+    <header class="page-header">
       <h1>Ingreso</h1>
-      <form id="form-login" novalidate>
+    </header>
+
+    <div class="form-container">
+      <form>
         <label>Correo
           <input name="email" type="email" maxlength="100" required placeholder="tucorreo@duoc.cl" />
         </label>
@@ -51,7 +54,7 @@
         </label>
         <button class="btn" type="submit">Entrar</button>
       </form>
-    </section>
+    </div>
   </main>
 
 

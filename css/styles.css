@@ -47,6 +47,8 @@ input:invalid,select:invalid,textarea:invalid{outline:2px solid #6b0000}
   .products-layout{grid-template-columns:1fr}
 }
 
+
+
 .form-wrapper {
   max-width: 400px;
   margin: 0 auto;
@@ -940,3 +942,70 @@ main {
   border-radius: 8px;
   overflow: hidden;
 }
+
+/* Para formularios del register, contacto*/
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #111; 
+  border-radius: 8px;      
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); 
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+legend {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #00ff80; 
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Contenedor de cada input-label */
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; 
+  margin-bottom: 1.2rem; 
+  font-size: 0.95rem;
+  color: #fff; 
+}
+
+/* Inputs y selects */
+form input,
+form select,
+form textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Placeholder en color más claro */
+form input::placeholder {
+  color: #aaa;
+}
+
+/* Pequeñas notas debajo del input */
+form small.hint {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 0.3rem;
+}
+
+/*Botones*/
+form button.btn {
+  width: auto;
+  padding: 0.8rem 5rem ;
+  margin: 1rem auto 0;
+  display: block;
+  background-color: #00ff80;
+}
+
