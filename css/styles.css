@@ -396,6 +396,13 @@ textarea:invalid {
   margin-bottom: 20px;
 }
 
+.featured h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #00ff80;
+  text-shadow: 0 0 8px rgba(0,255,128,0.6);
+}
 #main-content {
   padding-left: 20px;   
   padding-right: 20px;  
@@ -573,9 +580,6 @@ textarea:invalid {
 .brands-grid img:hover {
   transform: scale(1.1);
 }
-
-
-
 
 
 /*BOTONES*/
