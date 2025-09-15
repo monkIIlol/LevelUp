@@ -22,7 +22,7 @@ function emailValido(valor) {
   return ok;
 }
 
-// Chile RUN/RUT validation (input sin puntos ni guion)
+// Chile RUN/RUT validacion (input sin puntos ni guion)
 function validarRUN(run) {
   const clean = String(run).toUpperCase().replace(/[^0-9K]/g, '');
   if (clean.length < 7 || clean.length > 9) return false;
