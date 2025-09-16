@@ -50,6 +50,10 @@ function clearError(input) {
   input.removeAttribute('aria-invalid');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  fillRegions('#admin-region', '#admin-comuna');
+});
+
 // Forms
 document.addEventListener('submit', (e) => {
   const form = e.target;
@@ -112,28 +116,97 @@ document.addEventListener('submit', (e) => {
     let ok = true;
     const { name, email, comment } = form;
     [name, email, comment].forEach(clearError);
-    if (!name.value.trim()) { showError(name, 'Requerido'); ok = false; }
-    if (!email.value.trim() || email.value.length > 100 || !emailValido(email.value)) { showError(email, 'Correo inválido o dominio no permitido'); ok = false; }
-    if (!comment.value.trim()) { showError(comment, 'Requerido'); ok = false; }
-    if (comment.value.length > 500) { showError(comment, 'Máximo 500 caracteres'); ok = false; }
+
+    // Nombre
+    if (!name.value.trim() || name.value.length > 100) {
+      showError(name, 'Nombre requerido (máx 100)');
+      ok = false;
+    }
+
+    // Correo
+    if (!email.value.trim() || email.value.length > 100) {
+      showError(email, 'Correo requerido (máx 100)');
+      ok = false;
+    } else if (!/^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/.test(email.value.trim())) {
+      showError(email, 'Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com');
+      ok = false;
+    }
+
+    // Comentario
+    if (!comment.value.trim()) {
+      showError(comment, 'Comentario requerido');
+      ok = false;
+    } else if (comment.value.length > 500) {
+      showError(comment, 'Máximo 500 caracteres');
+      ok = false;
+    }
+
     if (ok) { alert('Mensaje enviado ✅'); form.reset(); }
   }
-  if (form.matches('#form-register')) {
+
+
+  if (form.matches('#form-register') || form.matches('#form-admin-user')) {
     e.preventDefault();
     let ok = true;
     const { email, password, run, firstName, lastName, role, region, comuna, address } = form;
     [email, password, run, firstName, lastName, role, region, comuna, address].forEach(clearError);
-    if (!email.value.trim() || email.value.length > 100 || !emailValido(email.value)) { showError(email, 'Correo inválido o dominio no permitido'); ok = false; }
-    if (!password.value || password.value.length < 4 || password.value.length > 10) { showError(password, 'Contraseña 4 a 10 caracteres'); ok = false; }
-    if (!validarRUN(run.value)) { showError(run, 'RUN inválido (sin puntos ni guion)'); ok = false; }
-    if (!firstName.value.trim() || firstName.value.length > 50) { showError(firstName, 'Requerido (máx 50)'); ok = false; }
-    if (!lastName.value.trim() || lastName.value.length > 100) { showError(lastName, 'Requerido (máx 100)'); ok = false; }
+
+    // Correo
+    if (!email.value.trim() || email.value.length > 100) {
+      showError(email, 'Correo requerido (máx 100)');
+      ok = false;
+    } else if (!/^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/.test(email.value.trim())) {
+      showError(email, 'Correo no válido, usa @duoc.cl, @profesor.duoc.cl o @gmail.com');
+      ok = false;
+    }
+
+    // Contraseña
+    if (!password.value || password.value.length < 4 || password.value.length > 10) {
+      showError(password, 'Contraseña entre 4 y 10 caracteres');
+      ok = false;
+    }
+
+    // RUN
+    if (!validarRUN(run.value)) {
+      showError(run, 'RUN inválido');
+      ok = false;
+    }
+    // Solo letras y espacios (sin números)
+    function soloLetras(valor) {
+      return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
+    }
+
+    // Nombre
+    if (!firstName.value.trim() || firstName.value.length > 100) {
+      showError(firstName, 'Nombre requerido (máx 100)');
+      ok = false;
+    } else if (!soloLetras(firstName.value.trim())) {
+      showError(firstName, 'El nombre solo puede contener letras');
+      ok = false;
+    }
+
+    // Apellidos
+    if (!lastName.value.trim() || lastName.value.length > 100) {
+      showError(lastName, 'Apellidos requeridos (máx 100)');
+      ok = false;
+    } else if (!soloLetras(lastName.value.trim())) {
+      showError(lastName, 'Los apellidos solo pueden contener letras');
+      ok = false;
+    }
+
+
+    // Otros datos
     if (!role.value) { showError(role, 'Selecciona un rol'); ok = false; }
     if (!region.value) { showError(region, 'Selecciona una región'); ok = false; }
     if (!comuna.value) { showError(comuna, 'Selecciona una comuna'); ok = false; }
-    if (!address.value.trim() || address.value.length > 300) { showError(address, 'Dirección requerida (máx 300)'); ok = false; }
+    if (!address.value.trim() || address.value.length > 300) {
+      showError(address, 'Dirección requerida (máx 300)');
+      ok = false;
+    }
+
     if (ok) { alert('Registro válido ✅'); }
   }
+
   if (form.matches('#form-product')) {
     e.preventDefault();
     let ok = true;
