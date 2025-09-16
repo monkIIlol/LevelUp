@@ -335,7 +335,76 @@ textarea:invalid {
 .btn-inc:hover { background-color: #0c0; }
 .btn-rem:hover { background-color: #222; }
 
+/**/
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px; /* izquierda flexible, derecha fija */
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
 
+.cart-left h2 {
+  margin: 0 0 1rem;
+}
+
+/* Panel derecho (resumen) */
+.cart-right {
+  align-self: start;
+  background: #0a0a0a;
+  border: 1px solid #111;
+  border-radius: 12px;
+  padding: 1rem;
+  position: sticky;  /* se mantiene visible al hacer scroll */
+  top: 80px;         /* espacio bajo el header */
+}
+
+.cart-summary {
+  display: grid;
+  gap: .75rem;
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-empty {
+  color: var(--fg-2);
+  margin-top: .5rem;
+}
+
+/* Botones de acción del panel derecho */
+.btn-primary {
+  background-color: #00ff80;
+  color: #000;
+  font-weight: 800;
+  border: none;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-primary:hover { background-color: #39FF14; }
+
+.btn-secondary {
+  background: #111;
+  color: #fff;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: .6rem 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-secondary:hover { background: #1a1a1a; }
+
+/* Responsive: una sola columna en móviles */
+@media (max-width: 900px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .cart-right { position: static; }
+}
 
 
 

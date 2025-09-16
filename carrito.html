@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrito · Level-Up Gamer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/products.js"></script>
+    <script defer src="js/validate.js"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img src="assets/logo.svg" alt="Logo Level‑Up Gamer" class="logo" />
+            <span>Level‑Up Gamer</span>
+        </a>
+        <nav class="main-nav" aria-label="Principal">
+            <a href="index.html" class="">Home</a>
+            <a href="products.html" class="">Productos</a>
+            <a href="blog.html" class="">Blogs</a>
+            <a href="about.html" class="">Nosotros</a>
+            <a href="contact.html" class="">Contacto</a>
+            <a href="login.html" class="">Iniciar sesión</a>
+            <a href="register.html" class="">Registro</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+        <a class="cart" href="products.html#carrito" aria-label="Carrito">
+            🛒 <span id="cart-count" aria-live="polite">0</span>
+        </a>
+    </header>
+
+    <main class="cart-layout">
+        <section class="cart-left">
+            <h2>Mi Carrito de Compras</h2>
+            <div id="cart-items" class="cart-items-list"></div>
+            <p id="cart-empty" class="cart-empty">Tu carrito está vacío.</p>
+        </section>
+
+        <aside class="cart-right">
+            <div class="cart-summary">
+                <h3>Detalle total</h3>
+                <p id="cart-total"><strong>Total:</strong> $0</p>
+                <button id="cart-clear" class="btn btn-secondary">Vaciar carrito</button>
+                <button class="btn btn-primary">Hacer pedido</button>
+            </div>
+        </aside>
+    </main>
+
+    </main>
+    <footer class="site-footer">
+        <div class="cols">
+            <section>
+                <h4>Level‑Up Gamer</h4>
+                <p>Tu tienda gamer en todo Chile.</p>
+            </section>
+            <section>
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </section>
+            <section>
+                <h4>Redes</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/level.uppgamer2025/" aria-label="Instagram">Instagram</a>
+                    </li>
+                    <li><a href="https://x.com/leveluppgamer12" aria-label="Twitter">Twitter</a></li>
+                    <li><a href="#" aria-label="YouTube">YouTube</a></li>
+                </ul>
+            </section>
+        </div>
+        <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof bindCart === 'function') {
+                bindCart(); // Esto renderiza el carrito y activa botones (+, −, quitar, vaciar)
+            } else {
+                console.warn('bindCart no está disponible');
+            }
+        });
+    </script>
+</body>
+
+</html>
