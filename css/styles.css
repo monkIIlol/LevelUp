@@ -76,12 +76,106 @@ img {
   background: #0a0a0a;
 }
 
+/*Carrito de Compras*/
 .cart {
   font-weight: 700;
   text-decoration: none;
   background: #0a0a0a;
   padding: .5rem .75rem;
   border-radius: 999px;
+}
+
+/* TARJETAS DEL CARRITO */
+.cart-card {
+  background-color: #111;       
+  border-radius: 12px;          
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #f0f0f0;              
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* ACCIONES DEL CARRITO */
+.cart-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cart-actions .btn {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-layout {
+display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
+.cart-left {
+  width: 100%;
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+/* Cada ítem más ancho y con estilo de lista */
+.cart-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  gap: 1rem;
+}
+
+/* Si tiene imagen o cantidad, puedes usar un layout tipo lista */
+.cart-card > * {
+  flex: 1;
+}
+
+.cart-left h2 {
+  margin: 0 0 1rem;
+}
+
+/* Panel derecho (resumen) */
+.cart-right {
+  align-self: start;
+  background: #0a0a0a;
+  border: 1px solid #111;
+  border-radius: 12px;
+  padding: 1rem;
+  position: sticky;  /* se mantiene visible al hacer scroll */
+  top: 80px;         /* espacio bajo el header */
+}
+
+.cart-summary {
+  display: grid;
+  gap: .75rem;
+}
+
+.cart-empty {
+  color: var(--fg-2);
+  margin-top: .5rem;
 }
 
 /*  FOOTER*/
@@ -294,37 +388,7 @@ textarea:invalid {
   object-fit: contain;
 }
 
-/* TARJETAS DEL CARRITO */
-.cart-card {
-  background-color: #111;       
-  border-radius: 12px;          
-  padding: 1rem;
-  margin-bottom: 1rem;
-  color: #f0f0f0;              
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
 
-.cart-card h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #fff;
-}
-
-/* ACCIONES DEL CARRITO */
-.cart-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.cart-actions .btn {
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
 
 /* BOTONES DEL CARRITO */
 .btn-dec { background-color: #0a0a0a; color: #fff; }   
@@ -334,47 +398,6 @@ textarea:invalid {
 .btn-dec:hover { background-color: #111; }
 .btn-inc:hover { background-color: #0c0; }
 .btn-rem:hover { background-color: #222; }
-
-/**/
-.cart-layout {
-  display: grid;
-  grid-template-columns: 1fr 340px; /* izquierda flexible, derecha fija */
-  gap: 1.25rem;
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
-}
-
-.cart-left h2 {
-  margin: 0 0 1rem;
-}
-
-/* Panel derecho (resumen) */
-.cart-right {
-  align-self: start;
-  background: #0a0a0a;
-  border: 1px solid #111;
-  border-radius: 12px;
-  padding: 1rem;
-  position: sticky;  /* se mantiene visible al hacer scroll */
-  top: 80px;         /* espacio bajo el header */
-}
-
-.cart-summary {
-  display: grid;
-  gap: .75rem;
-}
-
-.cart-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cart-empty {
-  color: var(--fg-2);
-  margin-top: .5rem;
-}
 
 /* Botones de acción del panel derecho */
 .btn-primary {
