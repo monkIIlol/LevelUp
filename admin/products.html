@@ -1,26 +1,37 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin · Productos</title>
   <link rel="stylesheet" href="../css/admin.css" />
+  <script defer src="../js/admin-products.js"></script>
+  <script defer src="../js/admin.js"></script>
+
   <style>
     table {
       border-collapse: collapse;
       width: 100%;
       margin-top: 1rem;
     }
-    th, td {
+
+    th,
+    td {
       text-align: left;
       padding: 8px;
       border-bottom: 1px solid #444;
     }
+
     th {
       background-color: #222;
       color: #00ff99;
     }
-    tr:hover {background-color: #333;}
+
+    tr:hover {
+      background-color: #333;
+    }
+
     .btn-small {
       padding: 4px 8px;
       margin: 0 2px;
@@ -28,26 +39,36 @@
       cursor: pointer;
       border-radius: 4px;
     }
-    .btn-edit { background: #007bff; color: white; }
-    .btn-del { background: #ff4444; color: white; }
+
+    .btn-edit {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-del {
+      background: #ff4444;
+      color: white;
+    }
   </style>
   <script defer src="../js/products.js"></script>
   <script defer src="../js/admin.js"></script>
 </head>
+
 <body class="admin">
-<aside class="sidebar">
-  <h2>Admin</h2>
-  <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="products.html" class="active">Productos</a>
-    <a href="product-new.html">Nuevo producto</a>
-    <a href="users.html">Usuarios</a>
-    <a href="user-new.html">Nuevo usuario</a>
-  </nav>
-</aside>
-<main>
-  <h1>Productos</h1>
-  <div id="admin-products"></div>
-</main>
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="products.html" class="active">Productos</a>
+      <a href="product-new.html">Nuevo producto</a>
+      <a href="users.html">Usuarios</a>
+      <a href="user-new.html">Nuevo usuario</a>
+    </nav>
+  </aside>
+  <main>
+    <h1>Productos</h1>
+    <div id="admin-products"></div>
+  </main>
 </body>
+
 </html>

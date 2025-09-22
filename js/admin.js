@@ -6,10 +6,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       products.map(p=>`<tr><td>${p.code}</td><td>${p.name}</td><td>${money(p.price)}</td><td>${Math.floor(Math.random()*20)}</td></tr>`).join('')
       + '</tbody></table>';
   }
-  const adminUsers = document.getElementById('admin-users');
-  if(adminUsers){
-    adminUsers.innerHTML = '<p>Listado de usuarios (mock).</p>';
-  }
+
   // Fill categories in product form if present
   const catSel = document.getElementById('admin-category');
   if(catSel){

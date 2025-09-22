@@ -22,20 +22,38 @@
     </nav>
   </aside>
   <main>
-      <h1>Dashboard</h1>
-      <p>Bienvenido al panel de administrador.</p>
-      <div class="stats">
-        <div class="stat-card">
-          <h3>Productos</h3>
-          <p>10</p>
-        </div>
-        <div class="stat-card">
-          <h3>Usuarios</h3>
-          <p>5</p>
-        </div>
+    <h1>Dashboard</h1>
+    <p>Bienvenido al panel de administrador.</p>
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Productos</h3>
+        <p id="stat-products">0</p>
       </div>
+      <div class="stat-card">
+        <h3>Usuarios</h3>
+        <p id="stat-users">0</p>
+      </div>
+    </div>
   </main>
-  
+
+  <script>
+    // Funciones para obtener datos desde localStorage
+    function getProducts() {
+      return JSON.parse(localStorage.getItem('admin-products') || '[]');
+    }
+    function getUsers() {
+      return JSON.parse(localStorage.getItem('admin-users') || '[]');
+    }
+
+    // Contar productos iniciales + guardados
+    const totalProducts = (window.products || []).length;
+    const totalUsers = getAdminUsers().length;
+
+
+    document.getElementById('stat-products').textContent = totalProducts;
+    document.getElementById('stat-users').textContent = totalUsers;
+  </script>
 </body>
+
 
 </html>
