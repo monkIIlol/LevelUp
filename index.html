@@ -170,6 +170,17 @@
     </div>
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof bindCart === 'function') {
+        bindCart();
+      }
+      if (typeof renderFeatured === 'function') {
+        renderFeatured(); // esto llena la sección “Destacados”
+      }
+    });
+    </script>
 </body>
 
 </html>

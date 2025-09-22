@@ -110,29 +110,35 @@ function renderCart() {
   const cont = document.getElementById('cart-items');
   if (!cont) return;
   const cart = getCart();
+
   if (cart.length === 0) {
     document.getElementById('cart-empty').style.display = 'block';
     document.getElementById('cart-total').textContent = 'Total: $0';
     cont.innerHTML = '';
-    return;
-  }
-  document.getElementById('cart-empty').style.display = 'none';
-
-  cont.innerHTML = cart.map(i => `
-    <div class="cart-card">
-      <h3>${i.name} <small>(${i.code})</small></h3>
-      <p>Cantidad: ${i.qty}</p>
-      <p>Precio: ${money(i.price * i.qty)}</p>
-      <div class="cart-actions">
-        <button class="btn btn-dec" data-dec="${i.code}">−</button>
-        <button class="btn btn-inc" data-inc="${i.code}">+</button>
-        <button class="btn btn-rem" data-rem="${i.code}">Quitar</button>
+  } else {
+    document.getElementById('cart-empty').style.display = 'none';
+    cont.innerHTML = cart.map(i => `
+      <div class="cart-card">
+        <h3>${i.name} <small>(${i.code})</small></h3>
+        <p>Cantidad: ${i.qty}</p>
+        <p>Precio: ${money(i.price * i.qty)}</p>
+        <div class="cart-actions">
+          <button class="btn btn-dec" data-dec="${i.code}">−</button>
+          <button class="btn btn-inc" data-inc="${i.code}">+</button>
+          <button class="btn btn-rem" data-rem="${i.code}">Quitar</button>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
 
-  const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
-  document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> ${money(total)}`;
+    const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
+    document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> ${money(total)}`;
+  }
+
+  // actualizar contador del icono siempre
+  const countEl = document.getElementById('cart-count');
+  if (countEl) {
+    countEl.textContent = cart.reduce((a, i) => a + i.qty, 0);
+  }
 }
 
 
