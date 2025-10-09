@@ -55,7 +55,19 @@ function clearError(input) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  fillRegions('#region-select', '#comuna-select');
   fillRegions('#admin-region', '#admin-comuna');
+
+  // límites de fecha: solo mayores de edad
+  const bd = document.querySelector('form#form-register input[name="birthDate"]');
+  if (bd) {
+    const today = new Date();
+    const maxAdult = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+    const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    bd.setAttribute('max', fmt(maxAdult));
+    bd.setAttribute('min', '1900-01-01');
+  }
 });
 
 // Manejo de envíos
@@ -174,6 +186,41 @@ document.addEventListener('submit', (e) => {
     if (!region.value) { showError(region, 'Selecciona región'); ok = false; }
     if (!comuna.value) { showError(comuna, 'Selecciona comuna'); ok = false; }
     if (!address.value || address.value.length > 300) { showError(address, 'Dirección requerida (máx 300)'); ok = false; }
+
+    // Fecha de nacimiento: requerida en registro y debe implicar >= 18 años
+    clearError(birthDate);
+    const isRegister = form.matches('#form-register');
+
+    if (isRegister) {
+      const v = (birthDate && birthDate.value) ? birthDate.value : '';
+      if (!v) {
+        showError(birthDate, 'Fecha de nacimiento requerida');
+        ok = false;
+      } else {
+        const d = new Date(v);
+        const isValid = !isNaN(d.getTime());
+        const today = new Date();
+        const minDate = new Date(1900, 0, 1);
+        // calcular edad exacta
+        let age = today.getFullYear() - d.getFullYear();
+        const m = today.getMonth() - d.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
+
+        if (!isValid) {
+          showError(birthDate, 'Fecha inválida');
+          ok = false;
+        } else if (d > today) {
+          showError(birthDate, 'La fecha no puede ser futura');
+          ok = false;
+        } else if (d < minDate) {
+          showError(birthDate, 'La fecha es demasiado antigua');
+          ok = false;
+        } else if (age < 18) {
+          showError(birthDate, 'Debes ser mayor de 18 años');
+          ok = false;
+        }
+      }
+    }
 
     if (ok) {
       // localStorage (usuarios)
