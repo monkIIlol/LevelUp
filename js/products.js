@@ -104,6 +104,29 @@ function addToCart(code) {
   const countEl = document.getElementById('cart-count');
   if (countEl) countEl.textContent = cart.reduce((a, i) => a + i.qty, 0);
   renderCart();
+
+  // Mostrar mensaje
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const userName = currentUser?.firstName || 'Usuario';
+  showToast(`${userName} agregó "${p.name}" al carrito 🛒`);
+
+  // Guardar historial para admin
+  let history = JSON.parse(localStorage.getItem('cartHistory') || '[]');
+  history.push({
+    user: userName,
+    product: p.name,
+    code: p.code,
+    timestamp: new Date().toISOString()
+  });
+  localStorage.setItem('cartHistory', JSON.stringify(history));
+
+  function showToast(msg) {
+    const div = document.createElement('div');
+    div.className = 'toast';
+    div.textContent = msg;
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 2000);
+  }
 }
 
 function renderCart() {
@@ -148,15 +171,75 @@ function bindCart() {
     const inc = e.target.closest('[data-inc]');
     const dec = e.target.closest('[data-dec]');
     const rem = e.target.closest('[data-rem]');
+
     if (add) { addToCart(add.dataset.add); }
-    if (inc) { const c = getCart(); const i = c.find(x => x.code === inc.dataset.inc); if (i) { i.qty++; setCart(c); renderCart(); } }
-    if (dec) { const c = getCart(); const i = c.find(x => x.code === dec.dataset.dec); if (i) { i.qty = Math.max(0, i.qty - 1); if (i.qty === 0) { c.splice(c.indexOf(i), 1); } setCart(c); renderCart(); } }
-    if (rem) { const c = getCart().filter(x => x.code !== rem.dataset.rem); setCart(c); renderCart(); }
+    if (inc) {
+      const c = getCart();
+      const i = c.find(x => x.code === inc.dataset.inc);
+      if (i) { i.qty++; setCart(c); renderCart(); }
+    }
+    if (dec) {
+      const c = getCart();
+      const i = c.find(x => x.code === dec.dataset.dec);
+      if (i) {
+        i.qty = Math.max(0, i.qty - 1);
+        if (i.qty === 0) { c.splice(c.indexOf(i), 1); }
+        setCart(c);
+        renderCart();
+      }
+    }
+    if (rem) {
+      const c = getCart().filter(x => x.code !== rem.dataset.rem);
+      setCart(c);
+      renderCart();
+    }
   });
+
+  // Botón vaciar carrito
   const clearBtn = document.getElementById('cart-clear');
-  if (clearBtn) clearBtn.addEventListener('click', () => { setCart([]); renderCart(); });
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    setCart([]);
+    renderCart();
+    showToast('Carrito vaciado 🗑️');
+  });
+
+  // Botón hacer pedido
+  const checkoutBtn = document.getElementById('cart-checkout');
+  checkoutBtn?.addEventListener('click', () => {
+    const cart = getCart();
+    if (cart.length === 0) {
+      showToast('Tu carrito está vacío ❌');
+      return;
+    }
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const userName = currentUser?.firstName || 'Usuario';
+
+    // Guardar historial de pedido
+    let history = JSON.parse(localStorage.getItem('cartHistory') || '[]');
+    cart.forEach(item => {
+      history.push({
+        user: userName,
+        product: item.name,
+        code: item.code,
+        qty: item.qty,
+        type: 'pedido',
+        timestamp: new Date().toISOString()
+      });
+    });
+    localStorage.setItem('cartHistory', JSON.stringify(history));
+
+    // Vaciar carrito
+    setCart([]);
+    renderCart();
+
+    // Mostrar mensaje de éxito
+    showToast(`¡${userName} realizó su pedido con éxito ✅`);
+  });
+
   renderCart();
 }
+
 
 function renderProductDetail() {
   const params = new URLSearchParams(location.search);
@@ -177,6 +260,38 @@ function renderProductDetail() {
     <p>${p.desc}</p>
     ${detailsHTML}
     <button class="btn" data-add="${p.code}">Añadir al carrito</button>`;
+}
+
+
+function showToast(msg) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const div = document.createElement('div');
+  div.className = 'toast';
+  div.textContent = msg;
+
+  // Estilo rápido para que se vea tipo alerta
+  div.style.background = '#333';
+  div.style.color = '#fff';
+  div.style.padding = '0.7rem 1rem';
+  div.style.borderRadius = '5px';
+  div.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+  div.style.opacity = '0';
+  div.style.transition = 'opacity 0.3s';
+
+  container.appendChild(div);
+
+  // Aparecer
+  requestAnimationFrame(() => {
+    div.style.opacity = '1';
+  });
+
+  // Desaparecer después de 2 segundos
+  setTimeout(() => {
+    div.style.opacity = '0';
+    div.addEventListener('transitionend', () => div.remove());
+  }, 2000);
 }
 
 

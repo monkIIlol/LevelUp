@@ -23,13 +23,21 @@
       <span>Level‑Up Gamer</span>
     </a>
     <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="">Home</a>
-      <a href="products.html" class="">Productos</a>
-      <a href="blog.html" class="">Blogs</a>
-      <a href="about.html" class="">Nosotros</a>
-      <a href="contact.html" class="">Contacto</a>
-      <a href="login.html" class="">Iniciar sesión</a>
-      <a href="register.html" class="active">Registro</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="products.html">Productos</a>
+      <a href="blog.html">Blogs</a>
+      <a href="about.html">Nosotros</a>
+      <a href="contact.html">Contacto</a>
+
+      <!-- Links visibles si NO está logueado -->
+      <a href="login.html" id="nav-login">Iniciar sesión</a>
+      <a href="register.html" id="nav-register">Registro</a>
+
+      <!-- Usuario logueado -->
+      <span id="nav-user" style="display:none;">
+        Bienvenido, <span id="user-profile"></span> |
+        <a href="#" id="logout-btn">Cerrar sesión</a>
+      </span>
     </nav>
 
     <button class="menu-toggle" aria-label="Abrir menú">☰</button>
