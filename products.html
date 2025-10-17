@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Productos · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
 
 
@@ -37,23 +41,25 @@
     </a>
   </header>
   <main id="main-content">
-    
-<header class="page-header"><h1>Productos</h1></header>
-<div class="products-layout">
-  <aside aria-label="Filtros">
-    <h3>Filtros</h3>
-    <label>Categoría
-      <select id="filter-category">
-        <option value="">Todas</option>
-      </select>
-    </label>
-    <label>Buscar
-      <input id="filter-q" type="search" placeholder="ej. 'mouse'" />
-    </label>
-    <button class="btn" id="apply-filters">Aplicar</button>
-  </aside>
-  <section class="products" id="products-grid" aria-live="polite"></section>
-</div>
+
+    <header class="page-header">
+      <h1>Productos</h1>
+    </header>
+    <div class="products-layout">
+      <aside aria-label="Filtros">
+        <h3>Filtros</h3>
+        <label>Categoría
+          <select id="filter-category">
+            <option value="">Todas</option>
+          </select>
+        </label>
+        <label>Buscar
+          <input id="filter-q" type="search" placeholder="ej. 'mouse'" />
+        </label>
+        <button class="btn" id="apply-filters">Aplicar</button>
+      </aside>
+      <section class="products" id="products-grid" aria-live="polite"></section>
+    </div>
 
   </main>
   <footer class="site-footer">
@@ -73,14 +79,27 @@
       </section>
       <section>
         <h4>Redes</h4>
-        <ul>
-          <li><a href="https://www.instagram.com/level.uppgamer2025/" aria-label="Instagram">Instagram</a></li>
-          <li><a href="https://x.com/leveluppgamer12" aria-label="Twitter">Twitter</a></li>
-          <li><a href="#" aria-label="YouTube">YouTube</a></li>
+        <ul class="social">
+          <li>
+            <a href="https://www.instagram.com/level.uppgamer2025/" aria-label="Instagram">
+              <img src="img/instagram.png" alt="Instagram"> Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/leveluppgamer12" aria-label="Twitter">
+              <img src="img/twitter.png" alt="Twitter"> Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="YouTube">
+              <img src="img/youtube.png" alt="YouTube"> YouTube
+            </a>
+          </li>
         </ul>
       </section>
     </div>
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
   </footer>
 </body>
+
 </html>
