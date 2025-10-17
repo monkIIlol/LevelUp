@@ -34,25 +34,84 @@
         <p id="stat-users">0</p>
       </div>
     </div>
+
+    <h2>Pedidos recientes</h2>
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Producto</th>
+          <th>Código</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="orders-body">
+        <tr>
+          <td colspan="4">No hay pedidos registrados.</td>
+        </tr>
+      </tbody>
+    </table>
+
   </main>
 
   <script>
-    // Funciones para obtener datos desde localStorage
+    // --- Funciones de obtención de datos ---
     function getProducts() {
       return JSON.parse(localStorage.getItem('admin-products') || '[]');
     }
+
     function getUsers() {
       return JSON.parse(localStorage.getItem('admin-users') || '[]');
     }
 
-    // Contar productos iniciales + guardados
-    const totalProducts = (window.products || []).length;
-    const totalUsers = getAdminUsers().length;
+    function getOrders() {
+      // Este es el historial que se guarda desde addToCart()
+      return JSON.parse(localStorage.getItem('cartHistory') || '[]');
+    }
 
+    // --- Actualizar totales ---
+    const products = getProducts();
+    const users = getUsers();
+    const orders = getOrders();
 
-    document.getElementById('stat-products').textContent = totalProducts;
-    document.getElementById('stat-users').textContent = totalUsers;
+    document.getElementById('stat-products').textContent = products.length;
+    document.getElementById('stat-users').textContent = users.length;
+
+    // Crear tarjeta de pedidos si no existe
+    const statsDiv = document.querySelector('.stats');
+    if (!document.getElementById('stat-orders')) {
+      const ordersCard = document.createElement('div');
+      ordersCard.className = 'stat-card';
+      ordersCard.innerHTML = `
+      <h3>Pedidos</h3>
+      <p id="stat-orders">${orders.length}</p>
+    `;
+      statsDiv.appendChild(ordersCard);
+    } else {
+      document.getElementById('stat-orders').textContent = orders.length;
+    }
+
+    // --- Mostrar pedidos recientes ---
+    const tbody = document.getElementById('orders-body');
+    tbody.innerHTML = '';
+
+    if (orders.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="4">No hay pedidos registrados.</td></tr>`;
+    } else {
+      const recent = orders.slice(-10).reverse(); // últimos 10 pedidos
+      for (const o of recent) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${o.user}</td>
+        <td>${o.product}</td>
+        <td>${o.code}</td>
+        <td>${new Date(o.timestamp).toLocaleString()}</td>
+      `;
+        tbody.appendChild(tr);
+      }
+    }
   </script>
+
 </body>
 
 

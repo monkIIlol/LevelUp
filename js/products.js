@@ -24,6 +24,10 @@ const products = [
   { code: 'PP001', category: 'PP', name: "Polera 'Level‑Up'", price: 14990, img: 'img/polera-negra.png', desc: 'Personalizable', details: ['Material: Algodón 100%', 'Tallas: S, M, L, XL', 'Personalizable con tu nombre', 'Color: Negro'] }
 ];
 
+if (!localStorage.getItem("productos")) {
+  localStorage.setItem("productos", JSON.stringify(products));
+}
+
 const descuento = parseInt(localStorage.getItem("descuento")) || 0;
 
 function aplicarDescuento(precio) {

@@ -1478,6 +1478,7 @@ textarea {
     padding: 1rem;
   }
 }
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -1490,4 +1491,3 @@ textarea {
   opacity: 0.9;
   font-weight: 500;
 }
-

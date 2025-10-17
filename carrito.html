@@ -23,22 +23,22 @@
             <span>Level‑Up Gamer</span>
         </a>
         <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="active">Home</a>
-      <a href="products.html">Productos</a>
-      <a href="blog.html">Blogs</a>
-      <a href="about.html">Nosotros</a>
-      <a href="contact.html">Contacto</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="products.html">Productos</a>
+            <a href="blog.html">Blogs</a>
+            <a href="about.html">Nosotros</a>
+            <a href="contact.html">Contacto</a>
 
-      <!-- Links visibles si NO está logueado -->
-      <a href="login.html" id="nav-login">Iniciar sesión</a>
-      <a href="register.html" id="nav-register">Registro</a>
+            <!-- Links visibles si NO está logueado -->
+            <a href="login.html" id="nav-login">Iniciar sesión</a>
+            <a href="register.html" id="nav-register">Registro</a>
 
-      <!-- Usuario logueado -->
-      <span id="nav-user" style="display:none;">
-        Bienvenido, <span id="user-profile"></span> |
-        <a href="#" id="logout-btn">Cerrar sesión</a>
-      </span>
-    </nav>
+            <!-- Usuario logueado -->
+            <span id="nav-user" style="display:none;">
+                Bienvenido, <span id="user-profile"></span> |
+                <a href="#" id="logout-btn">Cerrar sesión</a>
+            </span>
+        </nav>
 
         <button class="menu-toggle" aria-label="Abrir menú">☰</button>
 
@@ -46,6 +46,8 @@
             🛒 <span id="cart-count" aria-live="polite">0</span>
         </a>
     </header>
+    <div id="toast-container" style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;"></div>
+
 
     <main class="cart-layout">
         <section class="cart-left">
