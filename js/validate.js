@@ -92,21 +92,27 @@ document.addEventListener('submit', (e) => {
     }
 
     if (ok) {
-      //login demo
+      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      const usuarioActual = usuarios.find(u => u.email === email);
+
       if (email === "admin@levelup.cl" && pass === "admin123") {
+        localStorage.setItem('currentUser', JSON.stringify({ firstName: "Admin", email }));
         window.location.href = "admin/index.html";
       } else if (email === "cliente@levelup.cl" && pass === "cliente123") {
         localStorage.removeItem("descuento");
+        localStorage.setItem('currentUser', JSON.stringify({ firstName: "Cliente", email }));
         window.location.href = "products.html";
-      } else if (email.endsWith("@duocuc.cl")) {
-        localStorage.setItem("descuento", "20");
-        alert("¡Bienvenido! Tienes 20% de descuento 🎉");
+      } else if (usuarioActual) {
+        localStorage.setItem('currentUser', JSON.stringify(usuarioActual));
+        if (email.endsWith("@duocuc.cl")) localStorage.setItem("descuento", "20");
         window.location.href = "products.html";
       } else {
         localStorage.removeItem("descuento");
+        localStorage.setItem('currentUser', JSON.stringify({ firstName: email.split("@")[0], email }));
         window.location.href = "products.html";
       }
     }
+
   }
 
   //  CONTACTO
@@ -177,7 +183,7 @@ document.addEventListener('submit', (e) => {
 
     // Email (dominios permitidos)
     if (!email.value.trim() || email.value.length > 100 ||
-        !/^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/.test(email.value.trim())) {
+      !/^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/.test(email.value.trim())) {
       showError(email, 'Correo inválido. Usa @duoc.cl, @profesor.duoc.cl o @gmail.com');
       ok = false;
     }
@@ -238,6 +244,10 @@ document.addEventListener('submit', (e) => {
       };
       usuarios.push(usuario);
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+      // Guardar usuario logueado
+      localStorage.setItem('currentUser', JSON.stringify({ email: usuario.email }));
+
       alert('Usuario válido ✅ ');
       form.reset();
     }
@@ -268,8 +278,9 @@ document.addEventListener('submit', (e) => {
     if (!category.value) { showError(category, 'Selecciona categoría'); ok = false; }
 
     if (ok) {
-      // Guardar producto en localStorage
       const productos = JSON.parse(localStorage.getItem('productos') || '[]');
+      const editIndex = localStorage.getItem('editProductIndex');
+
       const producto = {
         code: code.value.trim(),
         name: name.value.trim(),
@@ -281,10 +292,19 @@ document.addEventListener('submit', (e) => {
         imageName: (form.image && form.image.files && form.image.files[0]) ? form.image.files[0].name : null,
         createdAt: new Date().toISOString()
       };
-      productos.push(producto);
+
+      if (editIndex !== null) {
+        productos[editIndex] = producto;
+        localStorage.removeItem('editProductIndex');
+        alert('Producto actualizado ✅');
+      } else {
+        productos.push(producto);
+        alert('Producto agregado ✅');
+      }
+
       localStorage.setItem('productos', JSON.stringify(productos));
-      alert('Producto válido ✅');
-      form.reset();
+      window.location.href = "products.html";
     }
+
   }
 });
