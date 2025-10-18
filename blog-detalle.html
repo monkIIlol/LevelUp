@@ -16,6 +16,8 @@
   <script defer src="js/main.js"></script>
 </head>
 
+<script defer src="js/comments.js"></script>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -102,10 +104,6 @@
 
       <form class="comments__form" data-comment-form>
         <div class="field">
-          <label for="comment_name">Tu nombre</label>
-          <input id="comment_name" name="comment_name" type="text" placeholder="Ej: Mon K." required />
-        </div>
-        <div class="field">
           <label for="comment_text">Comentario</label>
           <textarea id="comment_text" name="comment_text" rows="4" placeholder="Escribe tu comentario…"
             required></textarea>
@@ -155,8 +153,44 @@
       </section>
     </div>
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
-  </footer>
+
+    <script>
+(function () {
+  const USERS_KEY = "lug_users";
+  const SESSION_KEY = "lug_session";
+
+  const navLogin = document.getElementById("nav-login");
+  const navReg   = document.getElementById("nav-register");
+  const navUser  = document.getElementById("nav-user");
+  const profile  = document.getElementById("user-profile");
+  const logout   = document.getElementById("logout-btn");
+
+  const users   = JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
+  const session = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+  const valid   = session && session.email && users[session.email] && users[session.email].password === session.password;
+
+  if (valid) {
+    const u = users[session.email];
+    const name = [u.firstName, u.lastName].filter(Boolean).join(" ").trim() || (u.email ? u.email.split("@")[0] : "Usuario");
+    if (profile) profile.textContent = name;
+    if (navLogin) navLogin.style.display = "none";
+    if (navReg)   navReg.style.display   = "none";
+    if (navUser)  navUser.style.display  = "inline";
+  } else {
+    localStorage.removeItem(SESSION_KEY); // limpia sesiones inválidas
+    if (navLogin) navLogin.style.display = "inline";
+    if (navReg)   navReg.style.display   = "inline";
+    if (navUser)  navUser.style.display  = "none";
+  }
+
+  logout?.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem(SESSION_KEY);
+    location.reload();
+  });
+})();
+</script>
+
 </body>
-<script defer src="js/comments.js"></script>
 
 </html>

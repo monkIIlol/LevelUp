@@ -142,6 +142,38 @@
     </div>
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
   </footer>
+
+  <script>
+(function () {
+  const USERS_KEY = "lug_users";
+  const SESSION_KEY = "lug_session";
+  const form = document.getElementById("form-register");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    if (!data.email || !data.password) { alert("Faltan datos de acceso."); return; }
+
+    const users = JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
+    if (users[data.email]) { alert("Ese correo ya está registrado."); return; }
+
+    const user = {
+      email: data.email,
+      password: data.password,
+      firstName: data.firstName || "",
+      lastName: data.lastName || "",
+      role: data.role || "Cliente",
+    };
+    users[data.email] = user;
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+    location.href = "blog.html";
+  });
+})();
+</script>
+
 </body>
+
 
 </html>
