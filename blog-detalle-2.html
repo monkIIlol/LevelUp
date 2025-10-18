@@ -23,9 +23,9 @@
       <span>Level‑Up Gamer</span>
     </a>
     <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="products.html">Productos</a>
-      <a href="blog.html">Blogs</a>
+      <a href="blog.html" class="active">Blogs</a>
       <a href="about.html">Nosotros</a>
       <a href="contact.html">Contacto</a>
 
@@ -46,7 +46,7 @@
       🛒 <span id="cart-count" aria-live="polite">0</span>
     </a>
   </header>
-  <main id="main-content">
+  <main id="main-content" data-post-id="rtx-esports">
 
     <article class="prose">
       <header>
@@ -81,6 +81,25 @@
         también juegas títulos AAA o disfrutas de gráficos realistas, una RTX puede ofrecer una experiencia superior y
         preparar tu setup para el futuro.</p>
     </article>
+
+    <section class="comments" data-comments-root>
+  <h2>Comentarios (<span data-comment-count="rtx-esports">0</span>)</h2>
+
+  <ul class="comments__list" data-comments-list></ul>
+
+  <form class="comments__form" data-comment-form>
+    <div class="field">
+      <label for="comment_name">Tu nombre</label>
+      <input id="comment_name" name="comment_name" type="text" placeholder="Ej: Mon K." required />
+    </div>
+    <div class="field">
+      <label for="comment_text">Comentario</label>
+      <textarea id="comment_text" name="comment_text" rows="4" placeholder="Escribe tu comentario…" required></textarea>
+    </div>
+    <button class="btn" type="submit">Publicar comentario</button>
+  </form>
+</section>
+
     <a class="btn" href="blog.html">← Volver</a>
 
 
@@ -124,5 +143,6 @@
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
   </footer>
 </body>
+<script defer src="js/comments.js"></script>
 
 </html>

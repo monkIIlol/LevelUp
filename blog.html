@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blogs · Level‑Up Gamer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/products.js"></script>
   <script defer src="js/validate.js"></script>
   <script defer src="js/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -19,9 +23,9 @@
       <span>Level‑Up Gamer</span>
     </a>
     <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="products.html">Productos</a>
-      <a href="blog.html">Blogs</a>
+      <a href="blog.html" class="active">Blogs</a>
       <a href="about.html">Nosotros</a>
       <a href="contact.html">Contacto</a>
 
@@ -43,26 +47,35 @@
     </a>
   </header>
   <main id="main-content">
-    
-<header class="page-header"><h1>Blogs</h1></header>
-<section class="blog-grid">
-  <article class="card">
-    <img src="img/teclados.jpg" alt="Noticia 1" />
-    <h3><a href="blog-detalle.html">Cómo elegir tu primer teclado mecánico</a></h3>
-    <p>Guía rápida para no equivocarte al comprar.</p>
-    <a href="blog-detalle.html" class="btn-readmore">Leer más →</a>
-  </article>
-  <article class="card">
-    <img src="img/valelapena.jpg" alt="Noticia 2" />
-    <h3><a href="blog-detalle-2.html">RTX: ¿vale la pena para e‑sports?</a></h3>
-    <p>Analizamos si necesitas trazado de rayos para competir.</p>
-    <a href="blog-detalle-2.html" class="btn-readmore">Leer más →</a>
-  </article>
-</section>
+
+    <header class="page-header">
+      <h1>Blogs</h1>
+    </header>
+    <section class="blog-grid" data-blog-list>
+      <article class="card" data-post-id="teclado-mecanico">
+        <img src="img/teclados.jpg" alt="Noticia 1" />
+        <h3><a href="blog-detalle.html">Cómo elegir tu primer teclado mecánico</a></h3>
+        <p>Guía rápida para no equivocarte al comprar.</p>
+        <div class="card__meta">
+          <span class="badge">💬 <span data-comment-count>0</span></span>
+        </div>
+        <a href="blog-detalle.html" class="btn-readmore">Leer más →</a>
+      </article>
+
+      <article class="card" data-post-id="rtx-esports">
+        <img src="img/valelapena.jpg" alt="Noticia 2" />
+        <h3><a href="blog-detalle-2.html">RTX: ¿vale la pena para e-sports?</a></h3>
+        <p>Analizamos si necesitas trazado de rayos para competir.</p>
+        <div class="card__meta">
+          <span class="badge">💬 <span data-comment-count>0</span></span>
+        </div>
+        <a href="blog-detalle-2.html" class="btn-readmore">Leer más →</a>
+      </article>
+    </section>
 
 
   </main>
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="cols">
       <section>
         <h4>Level‑Up Gamer</h4>
@@ -101,4 +114,7 @@
     <small>© Level-Up Gamer 2025 · Todos los derechos reservados</small>
   </footer>
 </body>
+
+<script defer src="js/comments.js"></script>
+
 </html>

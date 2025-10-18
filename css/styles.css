@@ -1524,17 +1524,7 @@ textarea {
   transition: color 0.25s, text-shadow 0.25s;
 }
 
-/* EFECTO DE LÍNEA ANIMADA */
-.site-footer a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #00ff80;
-  transition: width 0.3s;
-}
+
 
 .site-footer a:hover {
   color: #00ff80;
@@ -1557,6 +1547,7 @@ textarea {
   filter: brightness(0) invert(1) drop-shadow(0 0 6px #00ff80);
   transform: scale(1.1);
 }
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -1569,3 +1560,22 @@ textarea {
   opacity: 0.9;
   font-weight: 500;
 }
+
+/* Comentarios */
+.comments { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #333; }
+.comments h2 { margin-bottom: 1rem; }
+.comments__list { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .75rem; }
+.comment { padding: .75rem 1rem; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: .75rem; }
+.comment__head { display: flex; gap: .5rem; align-items: baseline; justify-content: space-between; margin-bottom: .25rem; }
+.comment__user { font-weight: 700; }
+.comment__time { font-size: .85rem; opacity: .7; }
+.comment__text { white-space: pre-wrap; }
+.comment-empty { opacity: .7; font-style: italic; }
+
+.comments__form .field { display: grid; gap: .35rem; margin-bottom: .75rem; }
+.comments__form input, .comments__form textarea {
+  width: 100%; padding: .6rem .75rem; border-radius: .5rem; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25); color: #fff;
+}
+.badge { font-size: .9rem; opacity: .85; }
+.card__meta { margin: .5rem 0; }
