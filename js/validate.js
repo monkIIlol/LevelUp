@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     const maxAdult = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 
-    const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const fmt = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     bd.setAttribute('max', fmt(maxAdult));
     bd.setAttribute('min', '1900-01-01');
   }
@@ -78,41 +78,36 @@ document.addEventListener('submit', (e) => {
   if (form.matches('#form-login')) {
     e.preventDefault();
     const email = form.email.value.trim();
-    const pass = form.password.value.trim();
-    let ok = true;
-    clearError(form.email); clearError(form.password);
+    const pass = form.password.value; // Contraseña del formulario
 
-    if (!email || email.length > 100 || !emailValido(email)) {
-      showError(form.email, 'Correo inválido');
-      ok = false;
+    clearError(form.email);
+    clearError(form.password);
+
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioEncontrado = usuarios.find(u => u.email === email);
+
+    // --- INTERROGATORIO ---
+    if (usuarioEncontrado) {
+      // Imprimimos la evidencia en la consola
+      console.log("Contraseña del formulario:", `"${pass}"`);
+      console.log("Contraseña guardada:", `"${usuarioEncontrado.password}"`);
+      console.log("¿Son exactamente iguales?", usuarioEncontrado.password === pass);
     }
-    if (!pass || pass.length < 4 || pass.length > 10) {
-      showError(form.password, 'Contraseña inválida (4-10)');
-      ok = false;
+    // --- FIN DEL INTERROGATORIO ---
+
+    if (usuarioEncontrado && usuarioEncontrado.password === pass) {
+      // Si todo coincide...
+      alert('Inicio de sesión exitoso ✅');
+      localStorage.setItem('currentUser', JSON.stringify(usuarioEncontrado));
+      window.location.href = "index.html";
+
+    } else if (email === "admin@levelup.cl" && pass === "admin12L3") {
+      // ... caso admin ...
+
+    } else {
+      // Si no coinciden...
+      showError(form.password, 'Correo o contraseña incorrectos');
     }
-
-    if (ok) {
-      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-      const usuarioActual = usuarios.find(u => u.email === email);
-
-      if (email === "admin@levelup.cl" && pass === "admin123") {
-        localStorage.setItem('currentUser', JSON.stringify({ firstName: "Admin", email }));
-        window.location.href = "admin/index.html";
-      } else if (email === "cliente@levelup.cl" && pass === "cliente123") {
-        localStorage.removeItem("descuento");
-        localStorage.setItem('currentUser', JSON.stringify({ firstName: "Cliente", email }));
-        window.location.href = "products.html";
-      } else if (usuarioActual) {
-        localStorage.setItem('currentUser', JSON.stringify(usuarioActual));
-        if (email.endsWith("@duocuc.cl")) localStorage.setItem("descuento", "20");
-        window.location.href = "products.html";
-      } else {
-        localStorage.removeItem("descuento");
-        localStorage.setItem('currentUser', JSON.stringify({ firstName: email.split("@")[0], email }));
-        window.location.href = "products.html";
-      }
-    }
-
   }
 
   //  CONTACTO
@@ -158,6 +153,19 @@ document.addEventListener('submit', (e) => {
     const birthDate = form.birthDate;
 
     [run, firstName, lastName, email, role, region, comuna, address].forEach(clearError);
+
+    const password = form.password;
+    const confirmPassword = form.confirmPassword;
+    clearError(password);
+    if (confirmPassword) clearError(confirmPassword);
+
+    if (!password.value || password.value.length < 4 || password.value.length > 10) {
+      showError(password, 'La contraseña debe tener entre 4 y 10 caracteres');
+      ok = false;
+    } else if (confirmPassword && password.value !== confirmPassword.value) {
+      showError(confirmPassword, 'Las contraseñas no coinciden');
+      ok = false;
+    }
 
     // RUN
     if (!validarRUN(run.value)) { showError(run, 'RUN inválido (sin puntos ni guion, ej:19011022K)'); ok = false; }
@@ -236,6 +244,7 @@ document.addEventListener('submit', (e) => {
         firstName: firstName.value.trim(),
         lastName: lastName.value.trim(),
         email: email.value.trim(),
+        password: password.value,
         role: role.value,
         region: region.value,
         comuna: comuna.value,
@@ -250,6 +259,7 @@ document.addEventListener('submit', (e) => {
 
       alert('Usuario válido ✅ ');
       form.reset();
+      window.location.href = "index.html";
     }
   }
 
@@ -294,17 +304,17 @@ document.addEventListener('submit', (e) => {
       };
 
       if (editIndex !== null) {
-        productos[editIndex] = producto;
-        localStorage.removeItem('editProductIndex');
+        productos[parseInt(editIndex, 10)] = producto;
+        localStorage.removeItem('editProductIndex'); // Limpiamos para la próxima vez
         alert('Producto actualizado ✅');
       } else {
         productos.push(producto);
         alert('Producto agregado ✅');
       }
 
-      localStorage.setItem('productos', JSON.stringify(productos));
-      window.location.href = "products.html";
-    }
+      localStorage.setItem("productos", JSON.stringify(productos));
 
+      window.location.href = "admin-products.html";
+    }
   }
 });

@@ -1,231 +1,156 @@
-/* admin.css */
+/* admin.css - VERSIÓN FINAL CORREGIDA */
 
 /* Reset básico y tipografía */
 body.admin {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    /* --- INICIO DE LA CORRECCIÓN --- */
+    display: grid;
+    grid-template-columns: 220px 1fr; /* Columna fija para sidebar, el resto para el contenido */
+    min-height: 100vh; /* Ocupa al menos toda la altura de la pantalla */
+    /* --- FIN DE LA CORRECCIÓN --- */
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 100%;
-  background: #1c1c1c;
-  border-right: 2px solid #00ff99;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
+    /* Se eliminó 'position: fixed' y sus propiedades relacionadas */
+    width: 220px;
+    background: #1c1c1c;
+    border-right: 2px solid #00ff99;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
 }
 
 .sidebar h2 {
-  color: #00ff99;
-  text-align: center;
-  margin-bottom: 2rem;
+    color: #00ff99;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .sidebar nav a {
-  display: block;
-  color: #ccc;
-  text-decoration: none;
-  padding: 0.7rem 1rem;
-  margin: 0.3rem 0;
-  border-radius: 6px;
-  transition: background 0.3s, color 0.3s;
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    margin: 0.3rem 0;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .sidebar nav a:hover,
 .sidebar nav a.active {
-  background: #00ff99;
-  color: #121212;
+    background: #00ff99;
+    color: #121212;
 }
 
 /* Main area */
 main {
-  margin-left: 240px;
-  padding: 2rem;
+    /* Se eliminó 'margin-left: 240px' */
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box; /* Buena práctica para que el padding no afecte el ancho total */
 }
 
-/* Dashboard cards */
+/* Dashboard cards (SIN CAMBIOS) */
 .stats {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .stat-card {
-  background: #1f1f1f;
-  padding: 1.5rem;
-  border-left: 5px solid #00ff99;
-  border-radius: 8px;
-  flex: 1 1 200px;
-  text-align: center;
-  transition: transform 0.2s;
+    background: #1f1f1f;
+    padding: 1.5rem;
+    border-left: 5px solid #00ff99;
+    border-radius: 8px;
+    flex: 1 1 200px;
+    text-align: center;
+    transition: transform 0.2s;
 }
 
 .stat-card:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-/* Tables */
+/* Tables (SIN CAMBIOS) */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
 }
 
 th,
 td {
-  padding: 0.8rem;
-  border-bottom: 1px solid #333;
-  text-align: left;
+    padding: 0.8rem;
+    border-bottom: 1px solid #333;
+    text-align: left;
 }
 
 th {
-  background: #1c1c1c;
-  color: #00ff99;
+    background: #1c1c1c;
+    color: #00ff99;
 }
 
 tr:hover {
-  background: #2c2c2c;
+    background: #2c2c2c;
 }
 
-/* Buttons */
+/* Buttons (SIN CAMBIOS) */
 .btn {
-  background: #00ff99;
-  color: #121212;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+    background: #00ff99;
+    color: #121212;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .btn:hover {
-  background: #00cc77;
+    background: #00cc77;
 }
 
-/* Small buttons for edit/delete */
+/* Small buttons for edit/delete (SIN CAMBIOS) */
 .btn-small {
-  padding: 0.3rem 0.6rem;
-  font-size: 0.85rem;
-  margin: 0 2px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+    margin: 0 2px;
 }
 
 .btn-edit {
-  background: #007bff;
-  color: #fff;
+    background: #007bff;
+    color: #fff;
 }
 
 .btn-del {
-  background: #ff4444;
-  color: #fff;
+    background: #ff4444;
+    color: #fff;
 }
 
-/* Forms */
+/* Forms (SIN CAMBIOS) */
 form {
-  background: #1f1f1f;
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 600px;
+    background: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 600px;
 }
 
 form label {
-  display: block;
-  margin-bottom: 1rem;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 form input,
 form select,
 form textarea {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.3rem;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background: #121212;
-  color: #f0f0f0;
-  box-sizing: border-box;
-}
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-  border-color: #00ff99;
-  outline: none;
-}
-
-/* Errors */
-.error {
-  color: #ff5555;
-  font-size: 0.85rem;
-  margin-top: 0.2rem;
-}
-
-/* Responsive */
-@media(max-width: 768px) {
-  .sidebar {
-    width: 180px;
-    padding: 1rem;
-  }
-
-  main {
-    margin-left: 200px;
-  }
-
-  .stats {
-    flex-direction: column;
-  }
-}
-
-
-/* textarea */
-textarea {
-  resize: none;
-  width: 100%;
-  height: 150px;
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 0.5em;
-  box-sizing: border-box;
-}
-
-/* Tabla de pedidos recientes */
-.orders-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-family: 'Arial', sans-serif;
-  background-color: #1f1f1f;
-  /* fondo oscuro */
-  color: #fff;
-  /* texto blanco */
-}
-
-.orders-table th,
-.orders-table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #444;
-  /* línea gris debajo de cada fila */
-  text-align: left;
-}
-
-.orders-table th {
-  background-color: #111;
-  /* encabezado más oscuro */
-  font-weight: bold;
-}
-
-.orders-table tr:hover {
-  background-color: #333;
-  /* efecto hover */
-}
-
-.orders-table td[colspan="4"] {
-  text-align: center;
-  color: #aaa;
-  /* mensaje "No hay pedidos" más tenue */
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #121212;
+    color: #f0f0f0;
+    box-sizing: border-box;
 }

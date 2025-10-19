@@ -76,7 +76,141 @@ img {
   background: #0a0a0a;
 }
 
-/*PERFIL DE USUARIO*/ 
+/* --- ESTILOS PARA SEPARAR EL HEADER EN IZQUIERDA Y DERECHA --- */ 
+.site-header {
+    display: flex; /* Convierte el header en un contenedor flexible */
+    justify-content: space-between; /* ¡Esta es la magia! Empuja los grupos a los extremos */
+    align-items: center; /* Alinea todo verticalmente */
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+    /* ...mantén los otros estilos que tenías para el header... */
+}
+
+.header-left, .header-right {
+    display: flex; /* Hace que los elementos dentro de cada grupo también estén en fila */
+    align-items: center; /* Los alinea verticalmente */
+    gap: 1rem; /* Crea un espacio entre los elementos de cada grupo */
+}
+
+/* --- ESTILO DEFINITIVO Y CORREGIDO PARA BOTONES DE LOGIN/REGISTRO --- */
+
+/* Contenedor de los botones para alinearlos bien */
+.header-right #logged-out-view {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Un pequeño espacio entre los dos botones */
+}
+
+/* Estilo para "Iniciar sesión" (el link simple) */
+.header-right .header-login-link {
+    color: var(--fg-2); /* Tu color de texto gris claro */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px; /* Bordes redondeados para el hover */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.header-right .header-login-link:hover {
+    color: var(--fg); /* Se pone blanco al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.1); /* Un fondo sutil al pasar el mouse */
+}
+
+/* Estilo para "Registro" (el botón con borde) */
+.header-right .header-register-btn {
+    color: var(--accent-2); /* Tu color verde gamer */
+    border: 1px solid var(--accent-2); /* Borde del mismo color verde */
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.header-right .header-register-btn:hover {
+    background-color: var(--accent-2); /* El fondo se vuelve verde */
+    color: #000; /* El texto se vuelve negro */
+}
+
+/* Contenedor principal del menú */
+.header-right .user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* El nombre de usuario (Eva, diego777, etc.) */
+.header-right .user-menu-trigger {
+    background: none;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--accent-2); /* Tu color verde gamer */
+    cursor: pointer;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.header-right .user-menu-trigger:hover {
+    color: #fff; /* Se pone blanco al pasar el mouse */
+    text-shadow: 0 0 8px rgba(0,255,128,0.8);
+}
+
+/* La cajita que aparece al hacer clic */
+.header-right .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+    z-index: 100;
+    right: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* enlace "Cerrar Sesión" */
+.header-right #user-dropdown a {
+    color: var(--fg); /* Tu color de texto blanco */
+    text-decoration: none; /* ¡Sin subrayado! */
+    display: block;
+    padding: 12px 16px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.header-right #user-dropdown a:hover {
+    background-color: var(--accent-2); /* Fondo verde */
+    color: #000; /* Texto negro */
+}
+
+.header-right .dropdown-content.show {
+    display: block;
+}
+
+.header-right .user-menu-trigger {
+    /* ESTAS TRES LÍNEAS SON NUEVAS */
+    display: flex;       /* Para alinear el ícono y el texto */
+    align-items: center; /* Centra todo verticalmente */
+    gap: 8px;            /* Espacio entre el ícono y el nombre */
+
+    background: none;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--accent-2); /* Tu color verde gamer */
+    cursor: pointer;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.header-right .user-profile-icon {
+    width: 24px;  /* Ancho del ícono */
+    height: 24px; /* Alto del ícono */
+}
 
 /*Carrito de Compras*/
 .cart {
@@ -1334,6 +1468,17 @@ form button.btn {
   margin: 1rem auto 0;
   display: block;
   background-color: #00ff80;
+}
+
+/* RESET PARA TODOS LOS BOTONES */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit; /* Usa la misma fuente que el resto del texto */
+    color: inherit; /* Usa el mismo color que el resto del texto */
+    cursor: pointer;
 }
 
 /* textarea */

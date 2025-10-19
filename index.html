@@ -18,34 +18,39 @@
 
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.svg" alt="Logo Level‑Up Gamer" class="logo" />
-      <span>Level‑Up Gamer</span>
-    </a>
+    <div class="header-left">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="Logo Level‑Up Gamer" class="logo" />
+        <span>Level‑Up Gamer</span>
+      </a>
+      <nav class="main-nav" aria-label="Principal">
+        <a href="index.html" class="active">Home</a> <a href="products.html">Productos</a>
+        <a href="blog.html">Blogs</a>
+        <a href="about.html">Nosotros</a>
+        <a href="contact.html">Contacto</a>
+      </nav>
+    </div>
 
-    <nav class="main-nav" aria-label="Principal">
-      <a href="index.html" class="active">Home</a>
-      <a href="products.html">Productos</a>
-      <a href="blog.html">Blogs</a>
-      <a href="about.html">Nosotros</a>
-      <a href="contact.html">Contacto</a>
-
-      <!-- Links visibles si NO está logueado -->
-      <a href="login.html" id="nav-login">Iniciar sesión</a>
-      <a href="register.html" id="nav-register">Registro</a>
-
-      <!-- Usuario logueado -->
-      <span id="nav-user" style="display:none;">
-        Bienvenido, <span id="user-profile"></span> |
-        <a href="#" id="logout-btn">Cerrar sesión</a>
-      </span>
-    </nav>
-
-    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-
-    <a class="cart" href="carrito.html" aria-label="Carrito">
-      🛒 <span id="cart-count" aria-live="polite">0</span>
-    </a>
+    <div class="header-right">
+      <div class="user-actions">
+        <div id="logged-out-view">
+          <a href="login.html" class="header-login-link">Iniciar sesión</a>
+          <a href="register.html" class="header-register-btn">Registro</a>
+        </div>
+        <div id="logged-in-view" style="display: none;">
+          <div class="user-menu">
+            <button id="user-menu-button" class="user-menu-trigger"></button>
+            <div id="user-dropdown" class="dropdown-content">
+              <a href="#" id="logout-button">Cerrar Sesión</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="cart" href="carrito.html" aria-label="Carrito">
+        🛒 <span id="cart-count" aria-live="polite">0</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    </div>
   </header>
   <main id="main-content">
 
